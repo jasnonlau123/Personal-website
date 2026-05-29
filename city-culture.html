@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>城市文化专题页面 | Liu YongKai</title>
+    <meta name="description" content="Liu YongKai 的城市文化专题页面项目，展示编辑设计、图文叙事和媒介传播延展。" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="brand-identity.css" />
+  </head>
+  <body class="project-detail-page">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="回到首页">LYK</a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#about">关于</a>
+        <a href="index.html#culture">传播</a>
+        <a class="active" href="index.html#design">项目</a>
+        <a href="index.html#research">研究</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+      <div class="header-meta">
+        <span>山东 济南</span>
+        <a class="language-button detail-home-link" href="index.html#design">返回</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="dome-section" aria-labelledby="gallery-title">
+        <div class="gallery-heading">
+          <div>
+            <span class="detail-kicker">Editorial</span>
+            <h2 id="gallery-title">城市专题</h2>
+          </div>
+          <p>拖动画廊浏览专题页面与传播延展，点击图片放大预览，再点击放大图进入详细项目介绍。</p>
+        </div>
+
+        <div class="dome-shell">
+          <div class="dome-gallery" id="dome-gallery" aria-label="城市文化专题作品画廊">
+            <div class="sphere-root" id="sphere-root">
+              <div class="sphere-main" id="sphere-main">
+                <div class="stage">
+                  <div class="sphere" id="dome-sphere"></div>
+                </div>
+                <div class="overlay" aria-hidden="true"></div>
+                <div class="overlay overlay--blur" aria-hidden="true"></div>
+                <div class="edge-fade edge-fade--top" aria-hidden="true"></div>
+                <div class="edge-fade edge-fade--bottom" aria-hidden="true"></div>
+                <div class="viewer" id="gallery-viewer">
+                  <div class="scrim" id="gallery-scrim"></div>
+                  <div class="frame" id="gallery-frame"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-notes">
+        <article>
+          <span>01</span>
+          <h2>专题结构</h2>
+          <p>可以加入城市调研、访谈摘录、地图线索、时间线和图文叙事长页。</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>传播延展</h2>
+          <p>适合展示网页封面、移动端页面、社媒长图、短视频封面和数据反馈。</p>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      window.galleryReturnPage = "city-culture.html";
+      window.galleryWorks = [
+        {
+          slug: "city-editorial-cover",
+          title: "城市专题封面",
+          type: "Editorial / Cover",
+          image: "assets/hero-cultural-lab.png",
+          description: "为城市文化专题建立封面视觉和图文叙事入口。",
+        },
+        {
+          slug: "city-story-layout",
+          title: "图文叙事页面",
+          type: "Editorial / Storytelling",
+          image: "assets/profile-liu-yongkai.png",
+          description: "把城市文化议题拆解为可阅读、可浏览、可分享的页面内容。",
+        },
+        {
+          slug: "city-media-extension",
+          title: "媒介传播延展",
+          type: "Media / Extension",
+          image: "assets/hero-cultural-lab.png",
+          description: "将城市专题延展为社交媒体封面、长图和短视频封面。",
+        },
+      ];
+    </script>
+    <script src="brand-gallery.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目作品介绍 | Liu YongKai</title>
+    <meta name="description" content="Liu YongKai 文化机构视觉识别项目作品详情页。" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="brand-identity.css" />
+  </head>
+  <body class="project-detail-page project-viewer-page">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="回到首页">LYK</a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#about">关于</a>
+        <a href="index.html#culture">传播</a>
+        <a class="active" href="index.html#design">项目</a>
+        <a href="index.html#research">研究</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+      <div class="header-meta">
+        <span>山东 济南</span>
+        <a class="language-button detail-home-link" id="project-back" href="brand-identity.html">返回</a>
+      </div>
+    </header>
+
+    <main class="project-viewer-shell">
+      <aside class="project-viewer-copy">
+        <h1 id="project-title"></h1>
+        <h2 id="project-subtitle"></h2>
+        <p id="project-narrative"></p>
+        <div class="project-meta">
+          <span id="project-location">JINAN, CHINA</span>
+          <span id="project-year">2026</span>
+        </div>
+      </aside>
+
+      <section class="project-viewer-gallery" aria-label="项目图片轮播">
+        <button class="viewer-arrow viewer-arrow-prev" type="button" aria-label="上一张">‹</button>
+        <img id="viewer-image" src="" alt="" />
+        <button class="viewer-arrow viewer-arrow-next" type="button" aria-label="下一张">›</button>
+        <div class="viewer-dots" id="viewer-dots" aria-label="图片分页"></div>
+      </section>
+    </main>
+
+    <script src="work-detail.js"></script>
+  </body>
+</html>

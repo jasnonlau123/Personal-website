@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>城市文字记忆 | Liu YongKai</title>
+    <meta name="description" content="Liu YongKai 的城市文字记忆项目，以动态档案堆叠展示城市文字样本。" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="brand-identity.css" />
+    <link rel="stylesheet" href="city-memory.css" />
+  </head>
+  <body class="project-detail-page city-memory-page">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="回到首页">LYK</a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#about">关于</a>
+        <a class="active" href="index.html#culture">传播</a>
+        <a href="index.html#design">项目</a>
+        <a href="index.html#research">研究</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+      <div class="header-meta">
+        <span>山东 济南</span>
+        <a class="language-button detail-home-link" href="index.html#culture">返回</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="memory-section" aria-labelledby="gallery-title">
+        <div class="gallery-heading memory-heading">
+          <div>
+            <span class="detail-kicker">Archive</span>
+            <h2 id="gallery-title">城市文字记忆</h2>
+          </div>
+          <p>以动态档案堆叠呈现城市文字样本。右侧可切换图片，后续可替换为你的真实项目简介。</p>
+        </div>
+
+        <div class="memory-stage" id="memory-stage">
+          <div id="memory-app" class="memory-app" aria-label="城市文字记忆 3D 交互动画"></div>
+          <div class="memory-fallback" id="memory-fallback" aria-hidden="true"></div>
+
+          <div class="memory-ui">
+            <div class="archive-time" id="time-box">
+              May 29, 2026<br />
+              00:00:00
+            </div>
+
+            <div class="archive-title">every : second</div>
+
+            <nav class="side-nav" id="side-nav" aria-label="城市文字记忆图片索引"></nav>
+
+            <div class="archive-icons" aria-label="页面操作">
+              <span>▣</span>
+              <button type="button" id="shuffle-image" aria-label="切换图片">⌯</button>
+              <span>?</span>
+            </div>
+
+            <div class="caption" id="archive-caption">
+              <strong>Today, 06:34:24 ⇢</strong>
+              城市文字记忆样本<br />
+              待补充项目简介
+              <span>↘ read more</span>
+              <span>▣ save this picture</span>
+            </div>
+          </div>
+
+          <div class="grain" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="city-memory.js"></script>
+  </body>
+</html>

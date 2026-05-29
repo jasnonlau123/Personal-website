@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文化机构视觉识别 | Liu YongKai</title>
+    <meta
+      name="description"
+      content="Liu YongKai 的文化机构视觉识别项目页面，展示品牌识别、字体色彩、视觉系统与项目作品。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="brand-identity.css" />
+  </head>
+  <body class="project-detail-page brand-identity-page">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="回到首页">LYK</a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#about">关于</a>
+        <a href="index.html#culture">传播</a>
+        <a class="active" href="index.html#design">项目</a>
+        <a href="index.html#research">研究</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+      <div class="header-meta">
+        <span>山东 济南</span>
+        <a class="language-button detail-home-link" href="index.html#design">返回</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="dome-section" aria-labelledby="gallery-title">
+        <div class="gallery-heading">
+          <div>
+            <span class="detail-kicker">Gallery</span>
+            <h2 id="gallery-title">项目作品</h2>
+          </div>
+          <p>拖动画廊浏览项目，点击图片放大预览，再点击放大图进入详细项目介绍。</p>
+        </div>
+
+        <div class="dome-shell">
+          <div class="dome-gallery" id="dome-gallery" aria-label="文化机构视觉识别项目画廊">
+            <div class="sphere-root" id="sphere-root">
+              <div class="sphere-main" id="sphere-main">
+                <div class="stage">
+                  <div class="sphere" id="dome-sphere"></div>
+                </div>
+                <div class="overlay" aria-hidden="true"></div>
+                <div class="overlay overlay--blur" aria-hidden="true"></div>
+                <div class="edge-fade edge-fade--top" aria-hidden="true"></div>
+                <div class="edge-fade edge-fade--bottom" aria-hidden="true"></div>
+                <div class="viewer" id="gallery-viewer">
+                  <div class="scrim" id="gallery-scrim"></div>
+                  <div class="frame" id="gallery-frame"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-notes">
+        <article>
+          <span>01</span>
+          <h2>如何添加你的作品</h2>
+          <p>
+            打开 <code>brand-gallery.js</code>，在 <code>works</code> 数组中添加图片路径、标题、类别和说明。图片建议放入
+            <code>assets</code> 文件夹。
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <script src="brand-gallery.js"></script>
+  </body>
+</html>

@@ -15,6 +15,8 @@ const dialog = document.getElementById("project-dialog");
 const dialogKicker = document.getElementById("dialog-kicker");
 const dialogTitle = document.getElementById("dialog-title");
 const dialogBody = document.getElementById("dialog-body");
+const projectSubmenu = document.getElementById("project-submenu");
+const projectSubpanel = document.getElementById("project-subpanel");
 const contactForm = document.getElementById("contact-form");
 const toast = document.getElementById("toast");
 
@@ -61,7 +63,29 @@ const projectContent = {
     brand: {
       kicker: "Brand System",
       title: "文化机构视觉识别",
-      body: "围绕文化机构的公共形象建立标志、字体、色彩、版式和应用系统。后续可替换成真实项目的背景、职责、过程和成果。",
+      body: "围绕文化机构的公共形象建立标志、字体、色彩、版式和应用系统。",
+      menu: [
+        {
+          label: "项目概览",
+          title: "从公共形象到识别系统",
+          body: "梳理文化机构的定位、受众和传播场景，把抽象的文化气质转化为清晰、可延展的视觉语言。",
+        },
+        {
+          label: "标志系统",
+          title: "标志与基础图形",
+          body: "建立主标志、辅助图形、留白规范和组合规则，保证线上页面、线下物料与展览现场保持一致识别。",
+        },
+        {
+          label: "字体色彩",
+          title: "字体、色彩与版式秩序",
+          body: "围绕标题、正文、导视和社媒传播建立字体层级，并用主色、辅助色和灰阶系统控制整体气质。",
+        },
+        {
+          label: "应用延展",
+          title: "多场景应用方案",
+          body: "延展到海报、展签、导览手册、社交媒体封面、活动视觉和基础办公物料，形成可落地的品牌工具包。",
+        },
+      ],
     },
     editorial: {
       kicker: "Editorial Design",
@@ -79,6 +103,28 @@ const projectContent = {
       kicker: "Brand System",
       title: "Visual Identity For Cultural Institutions",
       body: "A visual identity system for cultural institutions, including logo, typography, color, layout, and application rules.",
+      menu: [
+        {
+          label: "Overview",
+          title: "From Public Image To Identity System",
+          body: "Clarify positioning, audiences, and communication scenes, then translate the institution's cultural character into a scalable visual language.",
+        },
+        {
+          label: "Logo System",
+          title: "Logo And Graphic Foundation",
+          body: "Build primary marks, supporting graphics, clear-space rules, and lockups for consistent recognition across digital and physical touchpoints.",
+        },
+        {
+          label: "Type & Color",
+          title: "Typography, Color, And Layout Order",
+          body: "Define type hierarchy, primary and supporting colors, and layout rhythm for editorial, wayfinding, and social media use.",
+        },
+        {
+          label: "Applications",
+          title: "Multi-Scene Application Toolkit",
+          body: "Extend the system into posters, captions, guidebooks, social covers, event visuals, and office materials.",
+        },
+      ],
     },
     editorial: {
       kicker: "Editorial Design",
@@ -100,7 +146,7 @@ const copy = {
     languageButton: "EN",
     orbAria: "切换首页关键词",
     brandAria: "回到首页",
-    heroSubtitle: "Master's student in Art and Design / Digital and Media Major / 山东济南",
+    heroSubtitle: "Master's student in Art and Design / Digital and Media Major",
     scrollHint: "移动鼠标开启探索吧 · 向下滚动查看更多",
     aboutTitle: "关于我",
     aboutText:
@@ -128,7 +174,7 @@ const copy = {
         title: "视觉化表达",
         desc: "海报、信息图、页面设计与文化内容可视化",
         stats: ["视觉形式", "项目类型", "传播适配"],
-        detail: "后续可以加入项目封面、过程稿、传播数据和受众反馈，让案例更有说服力。",
+        detail: "以视觉设计转译文化内涵，让传统记忆、地域符号与当代表达在图像中被重新看见。",
       },
     ],
     moreOpen: "收起细节",
@@ -172,7 +218,7 @@ const copy = {
     languageButton: "中",
     orbAria: "Switch hero keyword",
     brandAria: "Back to home",
-    heroSubtitle: "Master's student in Art and Design / Digital and Media Major / Jinan, Shandong",
+    heroSubtitle: "Master's student in Art and Design / Digital and Media Major",
     scrollHint: "Move the cursor to explore · Scroll down for more",
     aboutTitle: "About Me",
     aboutText:
@@ -200,7 +246,8 @@ const copy = {
         title: "Visual Expression",
         desc: "Posters, infographics, page design, and cultural content visualization",
         stats: ["Visual Forms", "Project Types", "Communication Fit"],
-        detail: "Later, project covers, drafts, communication data, and audience feedback can make each case stronger.",
+        detail:
+          "Visual design translates cultural meaning, allowing traditional memory, regional symbols, and contemporary expression to be seen anew through images.",
       },
     ],
     moreOpen: "Hide details",
@@ -325,7 +372,7 @@ window.addEventListener("pointermove", (event) => {
   }
 });
 
-document.querySelectorAll("a, button, input, textarea, .project-row").forEach((item) => {
+document.querySelectorAll("a, button, input, textarea, .project-row, .skill-card[data-url]").forEach((item) => {
   item.addEventListener("pointerenter", () => cursorRing.classList.add("is-active"));
   item.addEventListener("pointerleave", () => cursorRing.classList.remove("is-active"));
 });
@@ -369,9 +416,27 @@ sections.forEach((section) => navObserver.observe(section));
 
 skillCards.forEach((card) => {
   const button = card.querySelector(".skill-more");
-  button.addEventListener("click", () => {
+  function openLinkedSkill() {
+    if (!card.dataset.url) return;
+    window.location.href = card.dataset.url;
+  }
+
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
     const isOpen = card.classList.toggle("is-open");
     button.textContent = isOpen ? copy[currentLanguage].moreOpen : copy[currentLanguage].moreClosed;
+  });
+
+  card.addEventListener("click", (event) => {
+    if (event.target.closest(".skill-more")) return;
+    openLinkedSkill();
+  });
+
+  card.addEventListener("keydown", (event) => {
+    if (!["Enter", " "].includes(event.key)) return;
+    if (event.target.closest(".skill-more")) return;
+    event.preventDefault();
+    openLinkedSkill();
   });
 });
 
@@ -391,13 +456,60 @@ researchButtons.forEach((button) => {
   });
 });
 
+function renderProjectSubmenu(content) {
+  projectSubmenu.innerHTML = "";
+  projectSubpanel.innerHTML = "";
+  dialog.classList.toggle("has-submenu", Boolean(content.menu));
+
+  if (!content.menu) return;
+
+  function activateItem(item, button) {
+    projectSubmenu.querySelectorAll("button").forEach((submenuButton) => {
+      submenuButton.classList.toggle("active", submenuButton === button);
+    });
+    projectSubpanel.innerHTML = `<h3>${item.title}</h3><p>${item.body}</p>`;
+    projectSubpanel.animate(
+      [
+        { opacity: 0, transform: "translateY(6px)" },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      { duration: 220, easing: "ease-out" }
+    );
+  }
+
+  content.menu.forEach((item, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = item.label;
+    button.addEventListener("click", () => activateItem(item, button));
+    projectSubmenu.append(button);
+
+    if (index === 0) {
+      activateItem(item, button);
+    }
+  });
+}
+
+function openProject(row) {
+  if (row.dataset.url) {
+    window.location.href = row.dataset.url;
+    return;
+  }
+
+  const content = projectContent[currentLanguage][row.dataset.project];
+  dialogKicker.textContent = content.kicker;
+  dialogTitle.textContent = content.title;
+  dialogBody.textContent = content.body;
+  renderProjectSubmenu(content);
+  dialog.showModal();
+}
+
 projectRows.forEach((row) => {
-  row.addEventListener("click", () => {
-    const content = projectContent[currentLanguage][row.dataset.project];
-    dialogKicker.textContent = content.kicker;
-    dialogTitle.textContent = content.title;
-    dialogBody.textContent = content.body;
-    dialog.showModal();
+  row.addEventListener("click", () => openProject(row));
+  row.addEventListener("keydown", (event) => {
+    if (!["Enter", " "].includes(event.key)) return;
+    event.preventDefault();
+    openProject(row);
   });
 });
 

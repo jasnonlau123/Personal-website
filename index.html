@@ -39,7 +39,7 @@
             <span>HELLO, I'M</span>
             <em>Liu</em>
           </h1>
-          <p>Master's student in Art and Design / Digital and Media Major / 山东济南</p>
+          <p>Master's student in Art and Design / Digital and Media Major</p>
         </div>
         <p class="scroll-hint">移动鼠标开启探索吧 · 向下滚动查看更多</p>
       </section>
@@ -76,7 +76,7 @@
           <i></i>
         </div>
         <div class="skill-stack">
-          <article class="skill-card reveal">
+          <article class="skill-card reveal" data-url="city-text-memory.html" role="button" tabindex="0">
             <header>
               <span>CU</span>
               <div>
@@ -114,7 +114,7 @@
             <button class="skill-more" type="button">查看细节</button>
             <p class="skill-detail">适合呈现你参与过的展览、讲座、媒体账号、短视频栏目或校园文化项目。</p>
           </article>
-          <article class="skill-card reveal">
+          <article class="skill-card reveal" data-url="poster-works.html" role="button" tabindex="0">
             <header>
               <span>VI</span>
               <div>
@@ -131,7 +131,7 @@
               <span>传播适配</span>
             </div>
             <button class="skill-more" type="button">查看细节</button>
-            <p class="skill-detail">后续可以加入项目封面、过程稿、传播数据和受众反馈，让案例更有说服力。</p>
+            <p class="skill-detail">以视觉设计转译文化内涵，让传统记忆、地域符号与当代表达在图像中被重新看见。</p>
           </article>
         </div>
       </section>
@@ -142,7 +142,13 @@
           <i></i>
         </div>
         <div class="project-list">
-          <article class="project-row reveal" data-project="brand">
+          <article
+            class="project-row reveal"
+            data-project="brand"
+            data-url="brand-identity.html"
+            role="button"
+            tabindex="0"
+          >
             <div>
               <h3>文化机构视觉识别</h3>
               <div class="tags">
@@ -155,7 +161,13 @@
             </div>
             <strong>01</strong>
           </article>
-          <article class="project-row reveal" data-project="editorial">
+          <article
+            class="project-row reveal"
+            data-project="editorial"
+            data-url="city-culture.html"
+            role="button"
+            tabindex="0"
+          >
             <div>
               <h3>城市文化专题页面</h3>
               <div class="tags">
@@ -168,7 +180,7 @@
             </div>
             <strong>02</strong>
           </article>
-          <article class="project-row reveal" data-project="digital">
+          <article class="project-row reveal" data-project="digital" role="button" tabindex="0">
             <div>
               <h3>互动展览导览原型</h3>
               <div class="tags">
@@ -249,6 +261,8 @@
       <span id="dialog-kicker">Project</span>
       <h2 id="dialog-title"></h2>
       <p id="dialog-body"></p>
+      <nav class="project-submenu" id="project-submenu" aria-label="项目子菜单"></nav>
+      <div class="project-subpanel" id="project-subpanel"></div>
     </dialog>
 
     <script src="script.js"></script>

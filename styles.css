@@ -360,6 +360,16 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.skill-card[data-url] {
+  cursor: pointer;
+  outline: none;
+}
+
+.skill-card[data-url]:hover,
+.skill-card[data-url]:focus-visible {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.1);
+}
+
 .skill-card header {
   display: flex;
   gap: 1rem;
@@ -459,13 +469,15 @@ textarea {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.82);
   cursor: pointer;
+  outline: none;
   transition:
     transform 0.22s ease,
     box-shadow 0.22s ease,
     background 0.22s ease;
 }
 
-.project-row:hover {
+.project-row:hover,
+.project-row:focus-visible {
   background: #fff;
   box-shadow: var(--shadow);
   transform: translateY(-6px);
@@ -662,6 +674,52 @@ textarea {
   color: #999;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.project-submenu {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.project-dialog.has-submenu .project-submenu {
+  display: flex;
+}
+
+.project-submenu button {
+  border: 0;
+  border-radius: 999px;
+  background: #eeeeef;
+  color: #444;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.project-submenu button.active {
+  background: #111;
+  color: #fff;
+}
+
+.project-subpanel {
+  display: none;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.project-dialog.has-submenu .project-subpanel {
+  display: block;
+}
+
+.project-subpanel h3 {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+}
+
+.project-subpanel p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .reveal {
