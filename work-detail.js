@@ -110,7 +110,7 @@ const workDetails = {
   "text-memory-signboard": {
     title: "街巷招牌",
     subtitle: "城市文字现场采样",
-    image: "https://picsum.photos/id/1015/1200/900?grayscale",
+    image: "assets/城市文字记忆/01.png",
     location: "JINAN, CHINA",
     year: "2026",
     narrative:
@@ -119,7 +119,7 @@ const workDetails = {
   "text-memory-archive": {
     title: "城市档案",
     subtitle: "文字材料与地方线索",
-    image: "https://picsum.photos/id/1011/1200/900?grayscale",
+    image: "assets/城市文字记忆/08.png",
     location: "JINAN, CHINA",
     year: "2026",
     narrative:
@@ -128,7 +128,7 @@ const workDetails = {
   "text-memory-typography": {
     title: "文字肌理",
     subtitle: "字形提取与视觉转译",
-    image: "https://picsum.photos/id/1020/1200/900?grayscale",
+    image: "assets/城市文字记忆/14.png",
     location: "JINAN, CHINA",
     year: "2026",
     narrative:

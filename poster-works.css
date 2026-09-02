@@ -5,23 +5,23 @@
 
 .visual-hero {
   position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  min-height: auto;
   width: min(100%, 1360px);
   margin: 0 auto;
-  padding: clamp(6.5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
+  padding: calc(56px + clamp(1.1rem, 2vw, 1.65rem)) clamp(1.25rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
 }
 
 .visual-page-heading {
   width: min(100%, 1280px);
-  margin: 0 auto clamp(1rem, 2.5vw, 1.8rem);
+  margin: 0 auto clamp(0.75rem, 1.4vw, 1.05rem);
+}
+
+.visual-page-heading .detail-kicker {
+  display: block;
 }
 
 .visual-page-heading h2 {
-  margin: 0.6rem 0 0;
+  margin: 0.45rem 0 0;
   color: #050505;
   font-size: clamp(2rem, 3.8vw, 4rem);
   line-height: 1;
@@ -33,7 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin-top: 2rem;
+  margin-top: 1.35rem;
 }
 
 .visual-meta span {
@@ -48,10 +48,11 @@
 .visual-card-zone {
   position: relative;
   width: min(100%, 1280px);
-  height: 600px;
+  height: clamp(33rem, 50vw, 40rem);
+  margin: 0 auto;
   overflow: hidden;
   border: 0.8px solid rgba(0, 0, 0, 0.22);
-  border-radius: 24px;
+  border-radius: 18px;
   background: #fff;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
 }
@@ -61,7 +62,7 @@
   left: clamp(1.75rem, 4.2vw, 3.6rem);
   top: 50%;
   z-index: 8;
-  max-width: 24rem;
+  max-width: 21rem;
   transform: translateY(-50%);
   color: #050505;
 }
@@ -69,7 +70,7 @@
 .swap-copy h1 {
   margin: 0.45rem 0 1.05rem;
   color: #050505;
-  font-size: clamp(2.45rem, 4.6vw, 3.85rem);
+  font-size: clamp(2.2rem, 3.9vw, 3.15rem);
   line-height: 0.94;
   font-weight: 1000;
   letter-spacing: 0;
@@ -78,7 +79,7 @@
 .swap-copy p {
   margin: 0;
   color: #111;
-  font-size: clamp(0.95rem, 1.45vw, 1.12rem);
+  font-size: clamp(0.88rem, 1.18vw, 1.02rem);
   line-height: 1.65;
   font-weight: 900;
 }
@@ -87,9 +88,9 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 640px;
-  height: 430px;
-  transform: translate(15%, 5%);
+  width: min(58vw, 760px);
+  height: min(38vw, 470px);
+  transform: translate(17%, 7%);
   transform-origin: bottom right;
   perspective: 900px;
   overflow: visible;
@@ -99,10 +100,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 640px;
-  height: 430px;
+  width: min(58vw, 760px);
+  height: min(38vw, 470px);
   border-radius: 12px;
-  border: 0.8px solid rgba(0, 0, 0, 0.74);
+  border: 0.7px solid rgba(0, 0, 0, 0.72);
   background: #fff;
   color: #050505;
   transform-style: preserve-3d;
@@ -118,8 +119,8 @@
   display: grid;
   align-content: end;
   gap: 0.8rem;
-  padding: 2rem;
-  border: 0.8px solid rgba(0, 0, 0, 0.74);
+  padding: clamp(1.45rem, 2.2vw, 2rem);
+  border: 0.7px solid rgba(0, 0, 0, 0.72);
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
     linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
@@ -129,7 +130,7 @@
 
 .card-inner span {
   color: rgba(0, 0, 0, 0.18);
-  font-size: 5.8rem;
+  font-size: clamp(4.8rem, 7vw, 6.4rem);
   line-height: 0.85;
   font-weight: 1000;
 }
@@ -137,7 +138,7 @@
 .card-inner h3 {
   margin: 0;
   color: #050505;
-  font-size: 2.4rem;
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
   line-height: 1;
   font-weight: 1000;
 }

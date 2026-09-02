@@ -32,44 +32,70 @@
             <span class="detail-kicker">Archive</span>
             <h2 id="gallery-title">城市文字记忆</h2>
           </div>
-          <p>以动态档案堆叠呈现城市文字样本。右侧可切换图片，后续可替换为你的真实项目简介。</p>
+          <p>拖拽浏览城市文字样本，点击居中图片查看拍摄时间、地点与背景。后续可替换为你的真实项目资料。</p>
         </div>
 
         <div class="memory-stage" id="memory-stage">
-          <div id="memory-app" class="memory-app" aria-label="城市文字记忆 3D 交互动画"></div>
-          <div class="memory-fallback" id="memory-fallback" aria-hidden="true"></div>
+          <div id="circular-gallery" class="circular-gallery" aria-label="城市文字记忆循环画廊"></div>
+        </div>
 
-          <div class="memory-ui">
-            <div class="archive-time" id="time-box">
-              May 29, 2026<br />
-              00:00:00
-            </div>
-
-            <div class="archive-title">every : second</div>
-
-            <nav class="side-nav" id="side-nav" aria-label="城市文字记忆图片索引"></nav>
-
-            <div class="archive-icons" aria-label="页面操作">
-              <span>▣</span>
-              <button type="button" id="shuffle-image" aria-label="切换图片">⌯</button>
-              <span>?</span>
-            </div>
-
-            <div class="caption" id="archive-caption">
-              <strong>Today, 06:34:24 ⇢</strong>
-              城市文字记忆样本<br />
-              待补充项目简介
-              <span>↘ read more</span>
-              <span>▣ save this picture</span>
-            </div>
+        <dialog class="memory-detail-dialog" id="memory-detail-dialog" aria-labelledby="memory-detail-title">
+          <button class="memory-dialog-close" id="memory-dialog-close" type="button" aria-label="关闭图片信息">×</button>
+          <div class="memory-detail-layout">
+            <figure class="memory-detail-media">
+              <img id="memory-detail-image" src="" alt="" />
+            </figure>
+            <article class="memory-detail-copy">
+              <span class="detail-kicker">Text Memory</span>
+              <h3 id="memory-detail-title">城市文字样本</h3>
+              <dl class="memory-detail-meta">
+                <div>
+                  <dt>拍摄时间</dt>
+                  <dd id="memory-detail-date">待补充</dd>
+                </div>
+                <div>
+                  <dt>拍摄地点</dt>
+                  <dd id="memory-detail-location">待补充</dd>
+                </div>
+              </dl>
+              <div class="memory-detail-background">
+                <span>拍摄背景</span>
+                <p id="memory-detail-background">待补充</p>
+              </div>
+            </article>
           </div>
+        </dialog>
+      </section>
 
-          <div class="grain" aria-hidden="true"></div>
+      <section class="graphic-memory-section" aria-labelledby="graphic-memory-title">
+        <div class="gallery-heading memory-heading">
+          <div>
+            <span class="detail-kicker">Graphic Archive</span>
+            <h2 id="graphic-memory-title">城市图形记忆</h2>
+          </div>
+          <p>记录城市中的图案、符号、公共标识、墙面纹理与空间图形。后续可继续加入你的城市观察与设计转译。</p>
+        </div>
+
+        <div class="graphic-memory-grid">
+          <article class="graphic-memory-card">
+            <span>01</span>
+            <h3>公共符号</h3>
+            <p>街区中的导视、告示与公共图形。</p>
+          </article>
+          <article class="graphic-memory-card">
+            <span>02</span>
+            <h3>墙面纹理</h3>
+            <p>旧墙、涂层、痕迹和时间肌理。</p>
+          </article>
+          <article class="graphic-memory-card">
+            <span>03</span>
+            <h3>街道图案</h3>
+            <p>铺装、门面、橱窗与城市节奏。</p>
+          </article>
         </div>
       </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="city-memory.js"></script>
   </body>
 </html>

@@ -7,8 +7,9 @@
     <meta name="description" content="Liu YongKai 的城市文化专题页面项目，展示编辑设计、图文叙事和媒介传播延展。" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="brand-identity.css" />
+    <link rel="stylesheet" href="city-culture.css" />
   </head>
-  <body class="project-detail-page">
+  <body class="project-detail-page city-culture-page">
     <header class="site-header">
       <a class="brand" href="index.html#home" aria-label="回到首页">LYK</a>
       <nav class="nav-links" aria-label="主要导航">
@@ -25,76 +26,140 @@
     </header>
 
     <main>
-      <section class="dome-section" aria-labelledby="gallery-title">
-        <div class="gallery-heading">
+      <section class="editorial-hero" aria-labelledby="editorial-title">
+        <div class="gallery-heading editorial-heading">
           <div>
-            <span class="detail-kicker">Editorial</span>
-            <h2 id="gallery-title">城市专题</h2>
+            <span class="detail-kicker">Editorial / Feature Page</span>
+            <h2 id="editorial-title">城市专题</h2>
           </div>
-          <p>拖动画廊浏览专题页面与传播延展，点击图片放大预览，再点击放大图进入详细项目介绍。</p>
+          <p>把城市文化议题组织成一条可阅读、可浏览、可延展传播的视觉叙事链路。</p>
         </div>
 
-        <div class="dome-shell">
-          <div class="dome-gallery" id="dome-gallery" aria-label="城市文化专题作品画廊">
-            <div class="sphere-root" id="sphere-root">
-              <div class="sphere-main" id="sphere-main">
-                <div class="stage">
-                  <div class="sphere" id="dome-sphere"></div>
-                </div>
-                <div class="overlay" aria-hidden="true"></div>
-                <div class="overlay overlay--blur" aria-hidden="true"></div>
-                <div class="edge-fade edge-fade--top" aria-hidden="true"></div>
-                <div class="edge-fade edge-fade--bottom" aria-hidden="true"></div>
-                <div class="viewer" id="gallery-viewer">
-                  <div class="scrim" id="gallery-scrim"></div>
-                  <div class="frame" id="gallery-frame"></div>
-                </div>
+        <div class="editorial-stage" id="editorial-stage">
+          <div class="editorial-copy">
+            <span class="detail-kicker">Urban Culture Storyline</span>
+            <h3>把城市线索拆成章节，让每一次滚动都像翻开一份现场档案。</h3>
+            <p>
+              这一页承接主站的“项目”入口，用更完整的专题结构去展示研究切口、图文逻辑、页面节奏与媒介延展方式。
+            </p>
+            <div class="editorial-tags">
+              <span>专题策划</span>
+              <span>叙事页面</span>
+              <span>媒介延展</span>
+            </div>
+          </div>
+
+          <div class="editorial-canvas" aria-label="城市专题视觉舞台">
+            <article class="feature-panel panel-main" data-depth="18">
+              <div class="panel-media">
+                <img src="assets/hero-cultural-lab.png" alt="城市专题主视觉拼贴" />
               </div>
+              <div class="panel-body">
+                <span>01 / Opening Scene</span>
+                <h4>城市议题封面</h4>
+                <p>用主视觉、标题和导语建立整页情绪与阅读入口。</p>
+              </div>
+            </article>
+
+            <article class="feature-panel panel-side panel-top" data-depth="9">
+              <div class="panel-media">
+                <img src="assets/城市文字记忆/01.png" alt="街头文字样本" />
+              </div>
+              <div class="panel-body compact">
+                <span>02 / Archive</span>
+                <h4>街头文字采样</h4>
+              </div>
+            </article>
+
+            <article class="feature-panel panel-side panel-bottom" data-depth="13">
+              <div class="panel-media">
+                <img src="assets/城市文字记忆/08.png" alt="城市图像细节" />
+              </div>
+              <div class="panel-body compact">
+                <span>03 / Reading Flow</span>
+                <h4>叙事章节切片</h4>
+              </div>
+            </article>
+
+            <div class="editorial-metric metric-left" data-depth="5">
+              <strong>4</strong>
+              <span>专题章节</span>
+            </div>
+            <div class="editorial-metric metric-right" data-depth="7">
+              <strong>12+</strong>
+              <span>延展媒介</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="project-notes">
-        <article>
+      <section class="editorial-sections">
+        <article class="section-card">
           <span>01</span>
-          <h2>专题结构</h2>
-          <p>可以加入城市调研、访谈摘录、地图线索、时间线和图文叙事长页。</p>
+          <h3>城市入口</h3>
+          <p>用封面标题、导语和主图先建立议题重量，再把用户引入后续阅读路径。</p>
         </article>
-        <article>
+        <article class="section-card">
           <span>02</span>
-          <h2>传播延展</h2>
-          <p>适合展示网页封面、移动端页面、社媒长图、短视频封面和数据反馈。</p>
+          <h3>现场档案</h3>
+          <p>把地图、街头文字、访谈摘录和视觉采样做成可浏览的证据层。</p>
+        </article>
+        <article class="section-card">
+          <span>03</span>
+          <h3>传播延展</h3>
+          <p>同一套专题语言继续延展到长图、社媒封面、短视频封面与活动页面。</p>
         </article>
       </section>
-    </main>
 
-    <script>
-      window.galleryReturnPage = "city-culture.html";
-      window.galleryWorks = [
-        {
-          slug: "city-editorial-cover",
-          title: "城市专题封面",
-          type: "Editorial / Cover",
-          image: "assets/hero-cultural-lab.png",
-          description: "为城市文化专题建立封面视觉和图文叙事入口。",
-        },
-        {
-          slug: "city-story-layout",
-          title: "图文叙事页面",
-          type: "Editorial / Storytelling",
-          image: "assets/profile-liu-yongkai.png",
-          description: "把城市文化议题拆解为可阅读、可浏览、可分享的页面内容。",
-        },
-        {
-          slug: "city-media-extension",
-          title: "媒介传播延展",
-          type: "Media / Extension",
-          image: "assets/hero-cultural-lab.png",
-          description: "将城市专题延展为社交媒体封面、长图和短视频封面。",
-        },
-      ];
-    </script>
-    <script src="brand-gallery.js"></script>
+      <section class="editorial-rail" aria-labelledby="rail-title">
+        <div class="gallery-heading editorial-rail-heading">
+          <div>
+            <span class="detail-kicker">Content Strip</span>
+            <h2 id="rail-title">内容切片</h2>
+          </div>
+          <p>参考专题编辑中的“章节预览”方式，把不同证据与场景压缩为一条可扫描的内容带。</p>
+        </div>
+
+        <div class="rail-track">
+          <article class="rail-card wide">
+            <img src="assets/城市文字记忆/03.png" alt="城市文字样本一" />
+            <div>
+              <span>文字线索</span>
+              <p>从街头招牌切入地方叙事。</p>
+            </div>
+          </article>
+          <article class="rail-card">
+            <img src="assets/城市文字记忆/05.png" alt="城市文字样本二" />
+            <div>
+              <span>图像采样</span>
+              <p>记录城市表面的时间痕迹。</p>
+            </div>
+          </article>
+          <article class="rail-card">
+            <img src="assets/profile-liu-yongkai.png" alt="人物访谈视角" />
+            <div>
+              <span>人物视角</span>
+              <p>让叙事从个体经验进入。</p>
+            </div>
+          </article>
+          <article class="rail-card wide">
+            <img src="assets/城市文字记忆/12.png" alt="专题图文页面细节" />
+            <div>
+              <span>版式章节</span>
+              <p>把长页拆成更清晰的阅读段落。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="editorial-closing">
+        <div>
+          <span class="detail-kicker">Editorial Extension</span>
+          <h2>一页专题，不止是一页。</h2>
+        </div>
+        <p>同一套视觉叙事可以向网页长页、短内容封面、讲述型海报与研究展示持续延展。</p>
+      </section>
+    </main>
+    <script src="city-culture.js"></script>
   </body>
 </html>

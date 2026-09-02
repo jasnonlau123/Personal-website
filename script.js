@@ -7,291 +7,356 @@ const languageButton = document.querySelector(".language-button");
 const navLinks = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("main section[id]");
 const revealEls = document.querySelectorAll(".reveal");
-const skillCards = document.querySelectorAll(".skill-card");
-const researchButtons = document.querySelectorAll(".research-tabs button");
-const researchDetail = document.getElementById("research-detail");
-const projectRows = document.querySelectorAll(".project-row");
-const dialog = document.getElementById("project-dialog");
-const dialogKicker = document.getElementById("dialog-kicker");
-const dialogTitle = document.getElementById("dialog-title");
-const dialogBody = document.getElementById("dialog-body");
-const projectSubmenu = document.getElementById("project-submenu");
-const projectSubpanel = document.getElementById("project-subpanel");
-const contactForm = document.getElementById("contact-form");
-const toast = document.getElementById("toast");
+const finePointer = window.matchMedia("(pointer: fine)");
+const identityCard = document.querySelector(".identity-card");
+const wechatButton = document.querySelector("[data-wechat]");
+const wechatNote = document.querySelector(".wechat-note");
+const backToTop = document.querySelector(".back-to-top");
 
 const orbWords = {
   zh: ["创新", "传播", "设计", "研究", "叙事"],
   en: ["Create", "Media", "Design", "Study", "Story"],
 };
-let orbIndex = 0;
-let currentLanguage = "zh";
-
-const researchContent = {
-  zh: {
-    media: {
-      title: "媒介环境中的文化转译",
-      body: "研究文化内容如何在社交媒体、视觉系统与公共空间中被重新编码，并影响受众的理解、参与和身份认同。",
-    },
-    design: {
-      title: "设计作为研究方法",
-      body: "关注视觉语言如何帮助梳理问题、组织证据，并把抽象的社会与文化议题转化为可讨论的界面。",
-    },
-    city: {
-      title: "城市叙事与地方感",
-      body: "探索城市记忆、社区经验和公共文化项目如何共同塑造地方形象，以及设计如何参与这种叙事。",
-    },
-  },
-  en: {
-    media: {
-      title: "Cultural Translation In Media Environments",
-      body: "This research explores how cultural content is re-coded across social media, visual systems, and public spaces, shaping understanding, participation, and identity.",
-    },
-    design: {
-      title: "Design As A Research Method",
-      body: "I study how visual language can organize questions and evidence, turning abstract cultural issues into discussable interfaces and narratives.",
-    },
-    city: {
-      title: "Urban Narrative And Sense Of Place",
-      body: "This direction examines how city memory, community experience, and public cultural projects shape place identity through design.",
-    },
-  },
-};
-
-const projectContent = {
-  zh: {
-    brand: {
-      kicker: "Brand System",
-      title: "文化机构视觉识别",
-      body: "围绕文化机构的公共形象建立标志、字体、色彩、版式和应用系统。",
-      menu: [
-        {
-          label: "项目概览",
-          title: "从公共形象到识别系统",
-          body: "梳理文化机构的定位、受众和传播场景，把抽象的文化气质转化为清晰、可延展的视觉语言。",
-        },
-        {
-          label: "标志系统",
-          title: "标志与基础图形",
-          body: "建立主标志、辅助图形、留白规范和组合规则，保证线上页面、线下物料与展览现场保持一致识别。",
-        },
-        {
-          label: "字体色彩",
-          title: "字体、色彩与版式秩序",
-          body: "围绕标题、正文、导视和社媒传播建立字体层级，并用主色、辅助色和灰阶系统控制整体气质。",
-        },
-        {
-          label: "应用延展",
-          title: "多场景应用方案",
-          body: "延展到海报、展签、导览手册、社交媒体封面、活动视觉和基础办公物料，形成可落地的品牌工具包。",
-        },
-      ],
-    },
-    editorial: {
-      kicker: "Editorial Design",
-      title: "城市文化专题页面",
-      body: "把城市文化议题拆解成可阅读、可浏览、可分享的图文叙事，适合承载调研文本、视觉素材和访谈摘录。",
-    },
-    digital: {
-      kicker: "Digital Experience",
-      title: "互动展览导览原型",
-      body: "围绕观众动线、内容层级和触屏交互，构建展览导览的数字原型，展示流程图、界面稿和用户反馈。",
-    },
-  },
-  en: {
-    brand: {
-      kicker: "Brand System",
-      title: "Visual Identity For Cultural Institutions",
-      body: "A visual identity system for cultural institutions, including logo, typography, color, layout, and application rules.",
-      menu: [
-        {
-          label: "Overview",
-          title: "From Public Image To Identity System",
-          body: "Clarify positioning, audiences, and communication scenes, then translate the institution's cultural character into a scalable visual language.",
-        },
-        {
-          label: "Logo System",
-          title: "Logo And Graphic Foundation",
-          body: "Build primary marks, supporting graphics, clear-space rules, and lockups for consistent recognition across digital and physical touchpoints.",
-        },
-        {
-          label: "Type & Color",
-          title: "Typography, Color, And Layout Order",
-          body: "Define type hierarchy, primary and supporting colors, and layout rhythm for editorial, wayfinding, and social media use.",
-        },
-        {
-          label: "Applications",
-          title: "Multi-Scene Application Toolkit",
-          body: "Extend the system into posters, captions, guidebooks, social covers, event visuals, and office materials.",
-        },
-      ],
-    },
-    editorial: {
-      kicker: "Editorial Design",
-      title: "Urban Culture Feature Page",
-      body: "An editorial web experience that turns urban cultural topics into readable, browsable, and shareable visual stories.",
-    },
-    digital: {
-      kicker: "Digital Experience",
-      title: "Interactive Exhibition Guide Prototype",
-      body: "A digital guide prototype built around visitor flow, content hierarchy, and touchscreen interaction.",
-    },
-  },
-};
 
 const copy = {
   zh: {
-    nav: ["关于", "传播", "项目", "研究", "合作"],
+    nav: ["传播", "服务", "研究", "合作"],
     location: "山东 济南",
     languageButton: "EN",
-    orbAria: "切换首页关键词",
     brandAria: "回到首页",
+    orbAria: "切换首页关键词",
     heroSubtitle: "Master's student in Art and Design / Digital and Media Major",
     scrollHint: "移动鼠标开启探索吧 · 向下滚动查看更多",
     aboutTitle: "关于我",
-    aboutText:
-      "我关注文化如何被看见、被理解、被重新组织。实践上，我把传播策略、视觉设计和研究方法结合起来，服务于展览、品牌、媒体内容、公共文化项目与学术写作。",
+    aboutText: "我关注文化如何被看见、被理解、被重新组织。实践上，我把传播策略、视觉设计和研究方法结合起来，服务于展览、品牌、媒体内容、公共文化项目与学术写作。",
     profileItems: [
       "<strong>身份：</strong>艺术与设计硕士研究生",
       "<strong>方向：</strong>文化传播 / 视觉设计 / 学术研究",
       "<strong>坐标：</strong>山东济南",
     ],
     cultureTitle: "文化传播",
-    skills: [
-      {
-        title: "文化议题策划",
-        desc: "传统文化、城市记忆、青年社群与跨文化交流",
-        stats: ["核心方向", "持续研究", "内容转译"],
-        detail: "可延展为活动主题策划、传播口径、视觉关键词、社媒栏目和线下体验路径。",
-      },
-      {
-        title: "内容与媒介传播",
-        desc: "活动、展览、访谈、短视频与社媒内容整合",
-        stats: ["内容模块", "媒介类型", "叙事完整度"],
-        detail: "适合呈现你参与过的展览、讲座、媒体账号、短视频栏目或校园文化项目。",
-      },
-      {
-        title: "视觉化表达",
-        desc: "海报、信息图、页面设计与文化内容可视化",
-        stats: ["视觉形式", "项目类型", "传播适配"],
-        detail: "以视觉设计转译文化内涵，让传统记忆、地域符号与当代表达在图像中被重新看见。",
-      },
+    cultureIntro: "从文化议题出发，将研究、内容与视觉组织为可被理解、参与和持续传播的公共经验。",
+    topics: [
+      ["文化议题策划", "从地方经验、传统资源与公共议题中建立清晰的传播主题。"],
+      ["城市文化叙事", "保存城市更新中的文字痕迹，让地方记忆重新进入公共视野。"],
+      ["文化内容转译", "用字体、图像与编辑系统降低复杂文化材料的理解门槛。"],
+      ["媒介协作传播", "根据展览、品牌、社交媒体与数字产品场景，建立彼此连贯的传播触点。"],
     ],
-    moreOpen: "收起细节",
-    moreClosed: "查看细节",
-    designTitle: "设计项目",
-    projects: [
-      {
-        title: "文化机构视觉识别",
-        desc: "围绕文化机构的公共形象建立标志、字体、色彩、版式和应用系统。",
-      },
-      {
-        title: "城市文化专题页面",
-        desc: "把城市文化议题拆解成可阅读、可浏览、可分享的图文叙事。",
-      },
-      {
-        title: "互动展览导览原型",
-        desc: "围绕观众动线、内容层级和触屏交互，构建展览导览的数字原型。",
-      },
+    designTitle: "设计服务",
+    designIntro: "覆盖品牌识别、字体创意、包装文创、视觉传播、数字体验、插画 IP 与出版物。",
+    serviceSlides: [
+      ["帝台春标志", "READ DETAILS"],
+      ["传承人百科", "READ DETAILS"],
+      ["包装文创", "READ DETAILS"],
+      ["山东大学管理学院四十周年标志", "READ DETAILS"],
+      ["数字体验", "READ DETAILS"],
+      ["北朝佛传图像故事研究", "READ DETAILS"],
     ],
     researchTitle: "学术研究",
-    researchTabs: ["媒介与文化", "设计研究", "城市叙事"],
-    contactTitle: "与我合作",
-    contactLead: "期待与志同道合的伙伴一起，创造有意义的文化传播、视觉设计与研究项目。",
-    coop: [
-      ["文化咨询", "文化议题策划、传播策略与项目定位。"],
-      ["项目设计", "品牌视觉、页面体验与内容结构设计。"],
-      ["研究分享", "学术讨论、讲座分享与跨领域合作。"],
+    researchIntro: "以文字、印刷、媒介与城市视觉文化为线索，将史料研究、设计实验与公共表达连接起来。",
+    researchSlides: [
+      ["中文金属活字出版物发展概略信息图", "#印刷史　#中文活字　#信息可视化"],
+      ["汉字解构与重组", "#汉字语义　#字形重组　#视觉实验"],
+      ["参数化逻辑下的字体形态生成", "#算法设计　#字体生成　#设计方法"],
+      ["城市文字记忆", "#城市叙事　#视觉文化遗产　#地方档案"],
+      ["塔林文字复刻计划", "#传统书体　#文字复刻　#开源计划"],
+      ["马圈湾汉简隶书可变字体设计", "#汉简隶书　#可变字体　#传统文化"],
+      ["基于西文书写工具的汉字字体创新设计", "#书写工具　#汉字字体　#设计创新"],
     ],
-    learnMore: "了解更多 →",
-    formTitle: "快速联系",
-    namePlaceholder: "您的姓名",
-    emailPlaceholder: "邮箱地址",
-    messagePlaceholder: "留言内容",
-    submit: "发送消息 ✈",
-    sent: "已生成联系意向。正式上线前可改为真实表单服务。",
-    closeAria: "关闭",
+    collabTitle: "与我合作",
+    collabText: "文化传播、品牌设计、视觉系统与研究项目，欢迎交流新的合作可能。",
+    collabLink: "发起合作对话",
+    contactLabel: "联系合作",
+    backToTop: "TOP",
+    controls: { prev: "上一张", next: "下一张", pause: "暂停", play: "播放" },
+    wechat: "WeChat 联系方式待补充，欢迎先通过邮件联系。",
+    copyright: "Copyright © 2026 Liu YongKai. All rights reserved.",
   },
   en: {
-    nav: ["About", "Culture", "Projects", "Research", "Contact"],
+    nav: ["Culture", "Services", "Research", "Contact"],
     location: "Jinan, Shandong",
     languageButton: "中",
-    orbAria: "Switch hero keyword",
     brandAria: "Back to home",
+    orbAria: "Switch hero keyword",
     heroSubtitle: "Master's student in Art and Design / Digital and Media Major",
     scrollHint: "Move the cursor to explore · Scroll down for more",
     aboutTitle: "About Me",
-    aboutText:
-      "I focus on how culture is seen, understood, and reorganized. My practice combines communication strategy, visual design, and research methods for exhibitions, branding, media content, public culture projects, and academic writing.",
+    aboutText: "I focus on how culture is seen, understood, and reorganized. My practice combines communication strategy, visual design, and research methods for exhibitions, branding, media content, public culture projects, and academic writing.",
     profileItems: [
       "<strong>Identity:</strong> Master's student in Art and Design",
       "<strong>Focus:</strong> Cultural Communication / Visual Design / Academic Research",
       "<strong>Location:</strong> Jinan, Shandong",
     ],
     cultureTitle: "Cultural Communication",
-    skills: [
-      {
-        title: "Cultural Topic Planning",
-        desc: "Traditional culture, city memory, youth communities, and cross-cultural exchange",
-        stats: ["Core Focus", "Ongoing Study", "Content Translation"],
-        detail: "This can expand into event themes, communication tone, visual keywords, social media columns, and offline experience paths.",
-      },
-      {
-        title: "Content And Media Communication",
-        desc: "Activities, exhibitions, interviews, short videos, and social media content",
-        stats: ["Content Modules", "Media Types", "Narrative Integrity"],
-        detail: "This section can present exhibitions, lectures, media accounts, short-video columns, or campus cultural projects.",
-      },
-      {
-        title: "Visual Expression",
-        desc: "Posters, infographics, page design, and cultural content visualization",
-        stats: ["Visual Forms", "Project Types", "Communication Fit"],
-        detail:
-          "Visual design translates cultural meaning, allowing traditional memory, regional symbols, and contemporary expression to be seen anew through images.",
-      },
+    cultureIntro: "Turning research, content, and visual systems into public cultural experiences that can be understood, joined, and shared.",
+    topics: [
+      ["Cultural Topic Strategy", "Build communication themes from local experience, cultural resources, and public issues."],
+      ["Urban Cultural Narrative", "Preserve lettering traces from urban change and return local memory to public view."],
+      ["Cultural Content Translation", "Use type, image, and editorial systems to make complex cultural material accessible."],
+      ["Media Collaboration", "Connect exhibitions, brands, social media, and digital products through coherent touchpoints."],
     ],
-    moreOpen: "Hide details",
-    moreClosed: "View details",
-    designTitle: "Design Projects",
-    projects: [
-      {
-        title: "Visual Identity For Cultural Institutions",
-        desc: "A public-facing identity system with logo, typography, color, layout, and applications.",
-      },
-      {
-        title: "Urban Culture Feature Page",
-        desc: "An editorial page that turns urban culture topics into readable and shareable stories.",
-      },
-      {
-        title: "Interactive Exhibition Guide Prototype",
-        desc: "A digital guide prototype built around visitor flow, content hierarchy, and touchscreen interaction.",
-      },
+    designTitle: "Design Services",
+    designIntro: "Brand identity, creative typography, cultural packaging, visual communication, digital experience, illustration, and publications.",
+    serviceSlides: [
+      ["Di Tai Chun Brand Mark", "READ DETAILS"],
+      ["Heritage Encyclopedia", "READ DETAILS"],
+      ["Cultural Products", "READ DETAILS"],
+      ["Visual Communication", "READ DETAILS"],
+      ["Digital Experience", "READ DETAILS"],
+      ["Northern Dynasties Buddhist Image Stories", "READ DETAILS"],
     ],
     researchTitle: "Academic Research",
-    researchTabs: ["Media & Culture", "Design Research", "Urban Narrative"],
-    contactTitle: "Collaboration",
-    contactLead: "I look forward to creating meaningful cultural communication, visual design, and research projects with like-minded partners.",
-    coop: [
-      ["Cultural Consulting", "Cultural topic planning, communication strategy, and project positioning."],
-      ["Project Design", "Brand visuals, page experience, and content structure design."],
-      ["Research Sharing", "Academic discussion, lectures, and cross-disciplinary collaboration."],
+    researchIntro: "Connecting historical materials, design experiments, and public expression through type, printing, media, and urban visual culture.",
+    researchSlides: [
+      ["Chinese Metal Type Publishing Infographic", "#Printing History　#Chinese Type　#Information Design"],
+      ["Chinese Character Deconstruction and Recombination", "#Semantic Type　#Glyph Form　#Visual Experiment"],
+      ["Parametric Typeface Form Generation", "#Computational Design　#Type Generation　#Design Method"],
+      ["Urban Text Memory", "#Urban Narrative　#Visual Heritage　#Local Archive"],
+      ["Tallinn Lettering Reproduction Project", "#Traditional Type　#Lettering Reproduction　#Open Source"],
+      ["Maquanwan Han-Slip Variable Typeface", "#Han-Slip Script　#Variable Font　#Cultural Heritage"],
+      ["Chinese Typeface Innovation with Western Writing Tools", "#Writing Tools　#Chinese Type　#Design Innovation"],
     ],
-    learnMore: "Learn more →",
-    formTitle: "Quick Contact",
-    namePlaceholder: "Your name",
-    emailPlaceholder: "Email address",
-    messagePlaceholder: "Message",
-    submit: "Send Message ✈",
-    sent: "Contact intent generated. This can be connected to a real form service before launch.",
-    closeAria: "Close",
+    collabTitle: "Collaboration",
+    collabText: "Open to cultural communication, brand design, visual systems, and research collaborations.",
+    collabLink: "Start a conversation",
+    contactLabel: "Collaborate",
+    backToTop: "TOP",
+    controls: { prev: "PREV", next: "NEXT", pause: "PAUSE", play: "PLAY" },
+    wechat: "WeChat details will be added soon. Please use email in the meantime.",
+    copyright: "Copyright © 2026 Liu YongKai. All rights reserved.",
   },
 };
+
+let currentLanguage = "zh";
+let orbIndex = 0;
+
+function updateScrollProgress() {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+  scrollProgress.style.setProperty("--scroll", `${progress}%`);
+}
+
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("resize", updateScrollProgress);
+updateScrollProgress();
+
+window.addEventListener("pointermove", (event) => {
+  if (!finePointer.matches) return;
+  cursorRing.style.left = `${event.clientX}px`;
+  cursorRing.style.top = `${event.clientY}px`;
+  const rect = hero.getBoundingClientRect();
+  if (event.clientY >= rect.top && event.clientY <= rect.bottom) {
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    heroOrb.style.left = `${Math.max(8, Math.min(78, x - 8))}%`;
+    heroOrb.style.top = `${Math.max(22, Math.min(72, y - 8))}%`;
+  }
+});
+
+document.querySelectorAll("a, button, .topic-card, .carousel-slide").forEach((item) => {
+  item.addEventListener("pointerenter", () => cursorRing.classList.add("is-active"));
+  item.addEventListener("pointerleave", () => cursorRing.classList.remove("is-active"));
+});
+
+function resetIdentityTilt() {
+  identityCard.classList.remove("is-tilting");
+  ["--tilt-x", "--tilt-y", "--glow-x", "--glow-y", "--image-x", "--image-y"].forEach((property) => identityCard.style.removeProperty(property));
+}
+
+identityCard.addEventListener("pointermove", (event) => {
+  if (!finePointer.matches) return;
+  const rect = identityCard.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width - 0.5;
+  const y = (event.clientY - rect.top) / rect.height - 0.5;
+  identityCard.classList.add("is-tilting");
+  identityCard.style.setProperty("--tilt-x", `${-y * 1.4}deg`);
+  identityCard.style.setProperty("--tilt-y", `${x * 1.7}deg`);
+  identityCard.style.setProperty("--glow-x", `${(x + 0.5) * 100}%`);
+  identityCard.style.setProperty("--glow-y", `${(y + 0.5) * 100}%`);
+  identityCard.style.setProperty("--image-x", `${x * -7}px`);
+  identityCard.style.setProperty("--image-y", `${y * -7}px`);
+});
+identityCard.addEventListener("pointerleave", resetIdentityTilt);
+finePointer.addEventListener("change", () => {
+  if (!finePointer.matches) resetIdentityTilt();
+});
+
+heroOrb.addEventListener("click", () => {
+  orbIndex = (orbIndex + 1) % orbWords[currentLanguage].length;
+  orbText.textContent = orbWords[currentLanguage][orbIndex];
+  heroOrb.classList.toggle("is-centered");
+});
+
+const carouselApis = [];
+
+function initCarousel(root) {
+  const viewport = root.querySelector(".carousel-viewport");
+  const track = root.querySelector(".carousel-track");
+  const sourceSlides = Array.from(root.querySelectorAll(".carousel-slide"));
+  const loopFill = root.dataset.loopFill === "true";
+  const cloneCount = loopFill ? Math.min(3, sourceSlides.length) : 0;
+
+  if (loopFill) {
+    const prepend = sourceSlides.slice(-cloneCount).map((slide) => slide.cloneNode(true));
+    const append = sourceSlides.slice(0, cloneCount).map((slide) => slide.cloneNode(true));
+    prepend.forEach((slide) => {
+      slide.dataset.carouselClone = "true";
+    });
+    append.forEach((slide) => {
+      slide.dataset.carouselClone = "true";
+    });
+    // Keep neighboring project cards visible on both sides at the loop boundary.
+    track.replaceChildren(...prepend, ...sourceSlides, ...append);
+  }
+
+  const slides = Array.from(root.querySelectorAll(".carousel-slide"));
+  const dots = root.querySelector(".carousel-dots");
+  const prev = root.querySelector(".carousel-prev");
+  const next = root.querySelector(".carousel-next");
+  const toggle = root.querySelector(".carousel-toggle");
+  let index = 0;
+  let physicalIndex = cloneCount;
+  let loopResetIndex = null;
+  let loopResetTimer = null;
+  let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches || root.dataset.autoplay === "false";
+  let timer = null;
+  let pointerStart = null;
+  let draggedAt = 0;
+
+  sourceSlides.forEach((slide, slideIndex) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `显示第 ${slideIndex + 1} 张`);
+    dot.addEventListener("click", () => goTo(slideIndex, true));
+    dots.append(dot);
+  });
+
+  slides.forEach((slide) => {
+    slide.addEventListener("click", (event) => {
+      if (performance.now() - draggedAt < 250) event.preventDefault();
+    });
+  });
+
+  function update() {
+    const activeSlide = slides[physicalIndex];
+    const offset = (viewport.clientWidth - activeSlide.offsetWidth) / 2 - activeSlide.offsetLeft;
+    track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === physicalIndex;
+      slide.classList.toggle("is-active", active);
+      slide.setAttribute("aria-hidden", String(!active));
+      slide.tabIndex = active ? 0 : -1;
+    });
+    Array.from(dots.children).forEach((dot, dotIndex) => {
+      const active = dotIndex === index;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-selected", String(active));
+    });
+  }
+
+  function resetLoopPosition() {
+    if (loopResetIndex === null) return;
+    window.clearTimeout(loopResetTimer);
+    const nextPhysicalIndex = loopResetIndex;
+    loopResetIndex = null;
+    track.style.transition = "none";
+    physicalIndex = nextPhysicalIndex;
+    update();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => track.style.removeProperty("transition"));
+    });
+  }
+
+  track.addEventListener("transitionend", (event) => {
+    if (event.target === track && event.propertyName === "transform") resetLoopPosition();
+  });
+
+  function restartTimer() {
+    window.clearInterval(timer);
+    if (!paused) timer = window.setInterval(() => goTo(index + 1, false), 5200);
+  }
+
+  function goTo(nextIndex, userInitiated = false) {
+    window.clearTimeout(loopResetTimer);
+    loopResetIndex = null;
+    const isForwardWrap = loopFill && index === sourceSlides.length - 1 && nextIndex === sourceSlides.length;
+    const isBackwardWrap = loopFill && index === 0 && nextIndex === -1;
+
+    if (isForwardWrap) {
+      index = 0;
+      physicalIndex = cloneCount + sourceSlides.length;
+      loopResetIndex = cloneCount;
+    } else if (isBackwardWrap) {
+      index = sourceSlides.length - 1;
+      physicalIndex = cloneCount - 1;
+      loopResetIndex = cloneCount + sourceSlides.length - 1;
+    } else {
+      index = (nextIndex + sourceSlides.length) % sourceSlides.length;
+      physicalIndex = cloneCount + index;
+    }
+    update();
+    if (loopResetIndex !== null) loopResetTimer = window.setTimeout(resetLoopPosition, 920);
+    if (userInitiated) restartTimer();
+  }
+
+  prev.addEventListener("click", () => goTo(index - 1, true));
+  next.addEventListener("click", () => goTo(index + 1, true));
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      paused = !paused;
+      toggle.setAttribute("aria-pressed", String(paused));
+      updateCarouselLanguage();
+      restartTimer();
+    });
+  }
+  viewport.addEventListener("pointerdown", (event) => {
+    pointerStart = { x: event.clientX, id: event.pointerId };
+    viewport.setPointerCapture(event.pointerId);
+  });
+  viewport.addEventListener("pointerup", (event) => {
+    if (!pointerStart) return;
+    const distance = event.clientX - pointerStart.x;
+    if (Math.abs(distance) > 45) {
+      draggedAt = performance.now();
+      goTo(index + (distance < 0 ? 1 : -1), true);
+    }
+    if (viewport.hasPointerCapture(pointerStart.id)) viewport.releasePointerCapture(pointerStart.id);
+    pointerStart = null;
+  });
+  viewport.addEventListener("pointercancel", () => {
+    pointerStart = null;
+  });
+
+  const api = { root, prev, next, toggle, getPaused: () => paused, update };
+  carouselApis.push(api);
+  requestAnimationFrame(update);
+  restartTimer();
+}
+
+document.querySelectorAll("[data-carousel]").forEach(initCarousel);
+window.addEventListener("resize", () => carouselApis.forEach((api) => api.update()));
+
+function updateCarouselLanguage() {
+  const controls = copy[currentLanguage].controls;
+  carouselApis.forEach((api) => {
+    if (api.root.dataset.compactControls !== "true") {
+      api.prev.textContent = controls.prev;
+      api.next.textContent = controls.next;
+    }
+    if (api.toggle) {
+      api.toggle.textContent = api.getPaused() ? controls.play : controls.pause;
+      api.toggle.setAttribute("aria-label", api.getPaused() ? controls.play : controls.pause);
+    }
+  });
+}
 
 function applyLanguage(language) {
   const text = copy[language];
   currentLanguage = language;
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
   document.querySelector(".brand").setAttribute("aria-label", text.brandAria);
+  document.querySelector(".footer-brand").setAttribute("aria-label", text.brandAria);
   languageButton.textContent = text.languageButton;
   document.querySelector(".header-meta span").textContent = text.location;
   navLinks.forEach((link, index) => {
@@ -306,85 +371,36 @@ function applyLanguage(language) {
   document.querySelectorAll(".profile-list li").forEach((item, index) => {
     item.innerHTML = text.profileItems[index];
   });
-  document.querySelector("#culture .section-title h2").textContent = text.cultureTitle;
-  skillCards.forEach((card, index) => {
-    const skill = text.skills[index];
-    card.querySelector("h3").textContent = skill.title;
-    card.querySelector("header p").textContent = skill.desc;
-    card.querySelectorAll(".skill-stats span").forEach((item, statIndex) => {
-      item.textContent = skill.stats[statIndex];
-    });
-    card.querySelector(".skill-detail").textContent = skill.detail;
-    card.querySelector(".skill-more").textContent = card.classList.contains("is-open")
-      ? text.moreOpen
-      : text.moreClosed;
+  document.querySelector("#culture .topics-title h2").textContent = text.cultureTitle;
+  document.querySelector("#design .institutional-heading h2").textContent = text.designTitle;
+  document.querySelectorAll("#design .carousel-slide:not([data-carousel-clone])").forEach((slide, index) => {
+    slide.querySelector("h3").textContent = text.serviceSlides[index][0];
+    slide.querySelector("p").textContent = text.serviceSlides[index][1];
   });
-  document.querySelector("#design .section-title h2").textContent = text.designTitle;
-  projectRows.forEach((row, index) => {
-    row.querySelector("h3").textContent = text.projects[index].title;
-    row.querySelector("p").textContent = text.projects[index].desc;
+  document.querySelector("#research .institutional-heading h2").textContent = text.researchTitle;
+  document.querySelector("#research .institutional-heading > p").textContent = text.researchIntro;
+  document.querySelectorAll("#research .carousel-slide:not([data-carousel-clone])").forEach((slide, index) => {
+    slide.querySelector("h3").textContent = text.researchSlides[index][0];
+    slide.querySelector("p").textContent = text.researchSlides[index][1];
   });
-  document.querySelector("#research .section-title h2").textContent = text.researchTitle;
-  researchButtons.forEach((button, index) => {
-    button.textContent = text.researchTabs[index];
-  });
-  const activeTopic = document.querySelector(".research-tabs button.active")?.dataset.topic || "media";
-  researchDetail.querySelector("h3").textContent = researchContent[language][activeTopic].title;
-  researchDetail.querySelector(".research-body").textContent = researchContent[language][activeTopic].body;
-  document.querySelector("#contact .section-title h2").textContent = text.contactTitle;
-  document.querySelector(".contact-lead").textContent = text.contactLead;
-  document.querySelectorAll(".coop-card").forEach((card, index) => {
-    card.querySelector("h3").textContent = text.coop[index][0];
-    card.querySelector("p").textContent = text.coop[index][1];
-    card.querySelector("a").textContent = text.learnMore;
-  });
-  document.querySelector(".contact-form h3").textContent = text.formTitle;
-  document.querySelector('.contact-form input[type="text"]').placeholder = text.namePlaceholder;
-  document.querySelector('.contact-form input[type="text"]').setAttribute("aria-label", text.namePlaceholder);
-  document.querySelector('.contact-form input[type="email"]').placeholder = text.emailPlaceholder;
-  document.querySelector('.contact-form input[type="email"]').setAttribute("aria-label", text.emailPlaceholder);
-  document.querySelector(".contact-form textarea").placeholder = text.messagePlaceholder;
-  document.querySelector(".contact-form textarea").setAttribute("aria-label", text.messagePlaceholder);
-  document.querySelector(".contact-form button").textContent = text.submit;
-  document.querySelector(".dialog-close").setAttribute("aria-label", text.closeAria);
+  document.querySelector(".site-footer > p").textContent = text.copyright;
+  document.querySelector(".footer-contact-label").textContent = text.contactLabel;
+  backToTop.textContent = text.backToTop;
+  backToTop.setAttribute("aria-label", text.backToTop);
+  if (wechatNote.textContent) wechatNote.textContent = text.wechat;
+  updateCarouselLanguage();
 }
 
-function updateScrollProgress() {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
-  scrollProgress.style.setProperty("--scroll", `${progress}%`);
-}
-
-window.addEventListener("scroll", updateScrollProgress, { passive: true });
-window.addEventListener("resize", updateScrollProgress);
-updateScrollProgress();
-
-window.addEventListener("pointermove", (event) => {
-  cursorRing.style.left = `${event.clientX}px`;
-  cursorRing.style.top = `${event.clientY}px`;
-
-  const rect = hero.getBoundingClientRect();
-  if (event.clientY >= rect.top && event.clientY <= rect.bottom) {
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    heroOrb.style.left = `${Math.max(8, Math.min(78, x - 8))}%`;
-    heroOrb.style.top = `${Math.max(22, Math.min(72, y - 8))}%`;
-  }
+languageButton.addEventListener("click", () => applyLanguage(currentLanguage === "zh" ? "en" : "zh"));
+wechatButton.addEventListener("click", () => {
+  wechatNote.textContent = copy[currentLanguage].wechat;
+  window.setTimeout(() => {
+    wechatNote.textContent = "";
+  }, 3200);
 });
 
-document.querySelectorAll("a, button, input, textarea, .project-row, .skill-card[data-url]").forEach((item) => {
-  item.addEventListener("pointerenter", () => cursorRing.classList.add("is-active"));
-  item.addEventListener("pointerleave", () => cursorRing.classList.remove("is-active"));
-});
-
-heroOrb.addEventListener("click", () => {
-  orbIndex = (orbIndex + 1) % orbWords[currentLanguage].length;
-  orbText.textContent = orbWords[currentLanguage][orbIndex];
-  heroOrb.classList.toggle("is-centered");
-});
-
-languageButton.addEventListener("click", () => {
-  applyLanguage(currentLanguage === "zh" ? "en" : "zh");
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 const revealObserver = new IntersectionObserver(
@@ -395,132 +411,23 @@ const revealObserver = new IntersectionObserver(
       revealObserver.unobserve(entry.target);
     });
   },
-  { threshold: 0.18 }
+  { threshold: 0.13 }
 );
-
-revealEls.forEach((el) => revealObserver.observe(el));
+revealEls.forEach((element) => revealObserver.observe(element));
 
 const navObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+        const current = link.getAttribute("href") === `#${entry.target.id}`;
+        link.classList.toggle("active", current);
+        link.toggleAttribute("aria-current", current);
       });
     });
   },
   { rootMargin: "-45% 0px -45% 0px" }
 );
-
 sections.forEach((section) => navObserver.observe(section));
-
-skillCards.forEach((card) => {
-  const button = card.querySelector(".skill-more");
-  function openLinkedSkill() {
-    if (!card.dataset.url) return;
-    window.location.href = card.dataset.url;
-  }
-
-  button.addEventListener("click", (event) => {
-    event.stopPropagation();
-    const isOpen = card.classList.toggle("is-open");
-    button.textContent = isOpen ? copy[currentLanguage].moreOpen : copy[currentLanguage].moreClosed;
-  });
-
-  card.addEventListener("click", (event) => {
-    if (event.target.closest(".skill-more")) return;
-    openLinkedSkill();
-  });
-
-  card.addEventListener("keydown", (event) => {
-    if (!["Enter", " "].includes(event.key)) return;
-    if (event.target.closest(".skill-more")) return;
-    event.preventDefault();
-    openLinkedSkill();
-  });
-});
-
-researchButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const content = researchContent[currentLanguage][button.dataset.topic];
-    researchButtons.forEach((item) => item.classList.toggle("active", item === button));
-    researchDetail.animate(
-      [
-        { opacity: 0, transform: "translateY(8px)" },
-        { opacity: 1, transform: "translateY(0)" },
-      ],
-      { duration: 240, easing: "ease-out" }
-    );
-    researchDetail.querySelector("h3").textContent = content.title;
-    researchDetail.querySelector(".research-body").textContent = content.body;
-  });
-});
-
-function renderProjectSubmenu(content) {
-  projectSubmenu.innerHTML = "";
-  projectSubpanel.innerHTML = "";
-  dialog.classList.toggle("has-submenu", Boolean(content.menu));
-
-  if (!content.menu) return;
-
-  function activateItem(item, button) {
-    projectSubmenu.querySelectorAll("button").forEach((submenuButton) => {
-      submenuButton.classList.toggle("active", submenuButton === button);
-    });
-    projectSubpanel.innerHTML = `<h3>${item.title}</h3><p>${item.body}</p>`;
-    projectSubpanel.animate(
-      [
-        { opacity: 0, transform: "translateY(6px)" },
-        { opacity: 1, transform: "translateY(0)" },
-      ],
-      { duration: 220, easing: "ease-out" }
-    );
-  }
-
-  content.menu.forEach((item, index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = item.label;
-    button.addEventListener("click", () => activateItem(item, button));
-    projectSubmenu.append(button);
-
-    if (index === 0) {
-      activateItem(item, button);
-    }
-  });
-}
-
-function openProject(row) {
-  if (row.dataset.url) {
-    window.location.href = row.dataset.url;
-    return;
-  }
-
-  const content = projectContent[currentLanguage][row.dataset.project];
-  dialogKicker.textContent = content.kicker;
-  dialogTitle.textContent = content.title;
-  dialogBody.textContent = content.body;
-  renderProjectSubmenu(content);
-  dialog.showModal();
-}
-
-projectRows.forEach((row) => {
-  row.addEventListener("click", () => openProject(row));
-  row.addEventListener("keydown", (event) => {
-    if (!["Enter", " "].includes(event.key)) return;
-    event.preventDefault();
-    openProject(row);
-  });
-});
-
-document.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
-
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  toast.textContent = copy[currentLanguage].sent;
-  window.setTimeout(() => {
-    toast.textContent = "";
-  }, 2400);
-});
 
 applyLanguage("zh");

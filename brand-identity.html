@@ -31,10 +31,19 @@
       <section class="dome-section" aria-labelledby="gallery-title">
         <div class="gallery-heading">
           <div>
-            <span class="detail-kicker">Gallery</span>
-            <h2 id="gallery-title">项目作品</h2>
+            <span class="detail-kicker">Commercial Archive</span>
+            <h2 id="gallery-title">文化机构视觉识别</h2>
           </div>
-          <p>拖动画廊浏览项目，点击图片放大预览，再点击放大图进入详细项目介绍。</p>
+          <p>汇集标志、VIS、包装、文创与字体方向。拖动画廊浏览项目，点击图片放大预览，再点击放大图进入详细项目介绍。</p>
+        </div>
+
+        <div class="brand-filter-bar" id="brand-filter-bar" aria-label="商业设计分类">
+          <button class="active" type="button" data-filter="all">全部</button>
+          <button type="button" data-filter="logo">Logo 标志</button>
+          <button type="button" data-filter="vis">VIS 系统</button>
+          <button type="button" data-filter="packaging">Packaging 包装</button>
+          <button type="button" data-filter="cultural">Cultural 文创</button>
+          <button type="button" data-filter="typography">Typography 字体</button>
         </div>
 
         <div class="dome-shell">
@@ -61,10 +70,10 @@
       <section class="project-notes">
         <article>
           <span>01</span>
-          <h2>如何添加你的作品</h2>
+          <h2>项目说明横幅</h2>
           <p>
-            打开 <code>brand-gallery.js</code>，在 <code>works</code> 数组中添加图片路径、标题、类别和说明。图片建议放入
-            <code>assets</code> 文件夹。
+            后续可将真实商业设计项目封面放入 <code>assets</code> 文件夹，并在 <code>brand-gallery.js</code>
+            中替换标题、类别、说明与详情页图片。
           </p>
         </article>
       </section>

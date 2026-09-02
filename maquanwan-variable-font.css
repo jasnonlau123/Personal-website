@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Maquanwan Variable";
+  src: url("网页素材/学术研究/敦煌马圈湾汉简隶书可变字体设计实践研究/MaquanwanFontVF.ttf") format("truetype");
+  font-display: swap;
+}
+
+.maquanwan-page { --research-green: #59c65b; --research-ink: #111; --research-paper: #fbfbf8; }
+.maquanwan-page .project-header { background: rgba(255, 255, 255, .96); }
+.font-hero { position: relative; min-height: 100svh; overflow: hidden; color: #fff; background: #141510; }
+.font-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.9); }
+.font-hero-shade { position: absolute; inset: 0; background: rgba(8, 11, 7, .54); }
+.font-hero-crumb { position: absolute; top: 92px; left: clamp(24px, 8vw, 160px); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.font-hero-copy { position: absolute; left: clamp(24px, 8vw, 160px); bottom: clamp(72px, 12vh, 160px); }
+.font-hero-copy p, .maquanwan-page .eyebrow { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .13em; }
+.font-hero-copy h1 { margin: 20px 0; font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: clamp(42px, 4vw, 72px); font-weight: 700; line-height: 1.1; letter-spacing: -.06em; white-space: nowrap; }
+.font-hero-copy span { font-size: 17px; }
+
+.research-summary, .research-film, .research-gallery { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
+.research-summary { padding: clamp(100px, 12vw, 190px) 0; }
+.summary-heading { display: grid; grid-template-columns: minmax(0, 1fr) 285px; gap: clamp(50px, 10vw, 150px); align-items: end; }
+.summary-heading h2, .film-heading h2, .gallery-intro h2 { margin: 20px 0 0; color: var(--research-ink); font-size: clamp(37px, 4vw, 65px); line-height: 1.18; letter-spacing: -.055em; }
+.research-actions { display: grid; gap: 14px; padding-bottom: 5px; }
+.research-actions .aside-label { margin: 0 0 2px; font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+.download-link, .watch-link { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--research-ink); padding: 12px 0; font-size: 15px; font-weight: 700; }
+.download-link { color: var(--research-ink); }
+.download-link span { color: var(--research-green); font-size: 22px; }
+.watch-link { color: #62625e; }
+
+.abstract-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(52px, 10vw, 170px); margin-top: 92px; }
+.abstract-copy { max-width: 780px; }
+.abstract-copy p { margin: 0 0 28px; font-size: clamp(17px, 1.28vw, 20px); line-height: 2.05; text-align: justify; }
+.research-detail-aside { display: grid; gap: 54px; align-self: start; }
+.research-specs { margin: 0; align-self: start; }
+.research-specs div { display: grid; grid-template-columns: 92px 1fr; border-top: 1px solid #d8d8d4; }
+.research-specs div:last-child { border-bottom: 1px solid #d8d8d4; }
+.research-specs dt { padding: 17px 12px 17px 0; color: #777; font-size: 13px; }
+.research-specs dd { margin: 0; padding: 16px 0 16px 18px; border-left: 2px solid var(--research-ink); font-size: 14px; line-height: 1.65; }
+.research-share p { margin: 0 0 20px; font-size: 13px; font-weight: 800; }
+.research-share > div { display: flex; align-items: center; gap: 24px; }
+.research-share a, .research-share button { display: grid; width: 24px; height: 24px; padding: 0; place-items: center; border: 0; background: transparent; color: var(--research-ink); cursor: pointer; }
+.research-share svg { width: 20px; height: 20px; }
+
+.research-film { width: 100%; padding: clamp(80px, 9vw, 150px) max(24px, calc((100% - 1200px) / 2)); background: #f5f5f5; color: var(--research-ink); }
+.film-heading { display: grid; grid-template-columns: 1fr 320px; gap: 50px; align-items: end; margin-bottom: 46px; }
+.film-heading h2 { color: var(--research-ink); font-family: "Maquanwan Variable", "PingFang SC", sans-serif; font-weight: 500; }
+.film-heading > p { margin: 0; color: #62625e; font-size: 16px; line-height: 1.8; }
+.research-film video { display: block; width: 100%; max-height: min(72vw, 760px); background: #000; }
+
+.research-gallery { padding: clamp(90px, 11vw, 180px) 0; overflow: hidden; }
+.gallery-intro { display: grid; grid-template-columns: 1fr 300px; gap: 55px; align-items: end; margin-bottom: 58px; }
+.gallery-intro h2 { font-family: "Maquanwan Variable", "PingFang SC", sans-serif; font-weight: 500; }
+.gallery-intro > p { margin: 0; color: #666; font-size: 16px; line-height: 1.8; }
+.research-gallery-viewport { overflow: visible; }
+.research-gallery-track { display: flex; gap: clamp(12px, 2vw, 30px); height: clamp(310px, 42vw, 620px); transition: transform .7s cubic-bezier(.22, .61, .36, 1); }
+.research-gallery-card { position: relative; flex: 0 0 68%; min-width: 0; margin: 0; overflow: hidden; background: #f5f5f2; }
+.research-gallery-card img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .7s cubic-bezier(.22, .61, .36, 1); }
+.research-gallery-card:not(:nth-child(8)):not(:nth-child(9)):not(:nth-child(10)) img { object-fit: cover; }
+.research-gallery-card:hover img { transform: scale(1.025); }
+.research-gallery-card::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 27%; background: rgba(0, 0, 0, .35); }
+.research-gallery-card figcaption { position: absolute; z-index: 1; bottom: 23px; left: 27px; color: #fff; font-size: 15px; font-weight: 700; }
+.research-gallery-controls { display: grid; grid-template-columns: 1fr auto auto 1fr; align-items: center; gap: 22px; margin-top: 35px; }
+.research-gallery-controls button { width: 38px; height: 38px; padding: 0; border: 1px solid #aaa; border-radius: 50%; background: transparent; color: var(--research-ink); font-size: 19px; cursor: pointer; }
+.research-gallery-controls button[data-research-next] { justify-self: end; }
+.research-gallery-controls .gallery-pause { width: auto; height: auto; border: 0; border-radius: 0; color: #666; font-size: 12px; }
+.research-gallery-controls span { font-size: 16px; letter-spacing: .08em; }
+.research-gallery-controls b { color: var(--research-green); }
+
+@media (max-width: 800px) {
+  .font-hero-crumb { top: 88px; left: 20px; font-size: 10px; }
+  .font-hero-copy { left: 20px; bottom: 76px; }
+  .font-hero-copy h1 { margin: 14px 0; font-size: clamp(34px, 10vw, 52px); white-space: normal; }
+  .font-hero-copy span { font-size: 14px; }
+  .research-summary, .research-gallery { width: min(100% - 40px, 620px); }
+  .summary-heading, .abstract-layout, .film-heading, .gallery-intro { grid-template-columns: 1fr; gap: 34px; }
+  .summary-heading h2, .film-heading h2, .gallery-intro h2 { font-size: 39px; }
+  .abstract-layout { margin-top: 60px; }
+  .abstract-copy p { font-size: 16px; line-height: 1.95; text-align: left; }
+  .research-film { padding: 74px 20px; }
+  .research-gallery-track { height: 330px; gap: 12px; }
+  .research-gallery-card { flex-basis: 88%; }
+  .research-gallery-card figcaption { bottom: 17px; left: 17px; font-size: 13px; }
+  .research-gallery-controls { gap: 12px; }
+  .research-gallery-controls .gallery-pause { display: none; }
+}

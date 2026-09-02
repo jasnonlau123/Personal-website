@@ -3,6 +3,7 @@ const defaultWorks = [
     slug: "core-visual",
     title: "品牌核心视觉",
     type: "Logo / Key Visual",
+    category: "logo",
     image: "assets/hero-cultural-lab.png",
     description: "用于展示文化机构主标志、核心图形和整体视觉气质，可替换为你的真实品牌主视觉。",
   },
@@ -10,6 +11,7 @@ const defaultWorks = [
     slug: "portrait-communication",
     title: "人物与传播形象",
     type: "Portrait / Communication",
+    category: "vis",
     image: "assets/profile-liu-yongkai.png",
     description: "适合放置项目负责人形象、传播海报或活动视觉，用来建立可信的公共沟通语境。",
   },
@@ -17,6 +19,7 @@ const defaultWorks = [
     slug: "typography-system",
     title: "标准字体系统",
     type: "Typography",
+    category: "typography",
     image: "assets/hero-cultural-lab.png",
     description: "记录标题、正文、导视和社交媒体用字的层级关系，保持视觉表达的一致性。",
   },
@@ -24,6 +27,7 @@ const defaultWorks = [
     slug: "color-layout",
     title: "色彩与版式规范",
     type: "Color / Layout",
+    category: "vis",
     image: "assets/profile-liu-yongkai.png",
     description: "展示主色、辅助色、灰阶系统和页面版式规则，方便后续扩展到更多物料。",
   },
@@ -31,6 +35,7 @@ const defaultWorks = [
     slug: "exhibition-material",
     title: "展览物料应用",
     type: "Exhibition Material",
+    category: "cultural",
     image: "assets/hero-cultural-lab.png",
     description: "可放入展签、导览册、活动海报、空间导视等线下应用效果。",
   },
@@ -38,12 +43,14 @@ const defaultWorks = [
     slug: "social-extension",
     title: "社交媒体延展",
     type: "Social Media",
+    category: "packaging",
     image: "assets/profile-liu-yongkai.png",
     description: "适合整理公众号封面、短视频封面、活动推文长图和社群传播素材。",
   },
 ];
 
 const works = window.galleryWorks || defaultWorks;
+let activeWorks = works;
 
 const gallery = document.getElementById("dome-gallery");
 const root = document.getElementById("sphere-root");
@@ -52,6 +59,7 @@ const sphere = document.getElementById("dome-sphere");
 const viewer = document.getElementById("gallery-viewer");
 const frame = document.getElementById("gallery-frame");
 const scrim = document.getElementById("gallery-scrim");
+const filterBar = document.getElementById("brand-filter-bar");
 
 const settings = {
   fit: 0.8,
@@ -90,6 +98,7 @@ let focusedImage = null;
 let focusedWork = null;
 let originalTileRect = null;
 let opening = false;
+let closing = false;
 let lastDragEndAt = 0;
 
 function buildItems(pool, segments) {
@@ -145,7 +154,7 @@ function updateResponsiveRadius() {
 
 function renderGallery() {
   sphere.innerHTML = "";
-  buildItems(works, settings.segments).forEach((item, index) => {
+  buildItems(activeWorks, settings.segments).forEach((item, index) => {
     const wrapper = document.createElement("div");
     wrapper.className = "item";
     wrapper.dataset.offsetX = item.x;
@@ -173,6 +182,17 @@ function renderGallery() {
     wrapper.append(button);
     sphere.append(wrapper);
   });
+}
+
+function setFilter(filter) {
+  if (opening || closing || focusedImage) return;
+  closeItem();
+  activeWorks = filter === "all" ? works : works.filter((work) => work.category === filter);
+  if (!activeWorks.length) activeWorks = works;
+  rotation = { x: 0, y: 0 };
+  renderGallery();
+  updateResponsiveRadius();
+  applyTransform();
 }
 
 function stopInertia() {
@@ -213,10 +233,12 @@ function startInertia(velocityX, velocityY) {
 }
 
 function openItem(imageButton, work) {
+  if (opening || closing || focusedImage) return;
   opening = true;
   focusedImage = imageButton;
   focusedWork = work;
   root.setAttribute("data-enlarging", "true");
+  root.setAttribute("data-previewing", "true");
   document.body.style.overflow = "hidden";
 
   const item = imageButton.parentElement;
@@ -256,10 +278,17 @@ function openItem(imageButton, work) {
   overlay.style.height = `${frameRect.height}px`;
   overlay.style.opacity = "0";
   overlay.style.transform = `translate(${tileRect.left - frameRect.left}px, ${tileRect.top - frameRect.top}px) scale(${tileRect.width / frameRect.width}, ${tileRect.height / frameRect.height})`;
-  overlay.innerHTML = `<img src="${work.image}" alt="${work.title}" draggable="false" />`;
+  overlay.innerHTML = `
+    <img src="${work.image}" alt="${work.title}" draggable="false" />
+    <span class="enlarge-caption" aria-hidden="true">
+      <strong>${work.title}</strong>
+      <small>点击进入项目介绍</small>
+    </span>
+  `;
   overlay.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+    if (opening) return;
     const target = new URL(settings.detailPage, window.location.href);
     target.searchParams.set("work", work.slug);
     target.searchParams.set("from", settings.returnPage);
@@ -267,7 +296,7 @@ function openItem(imageButton, work) {
   });
   viewer.append(overlay);
 
-  requestAnimationFrame(() => {
+  window.requestAnimationFrame(() => {
     overlay.style.opacity = "1";
     overlay.style.transform = "translate(0, 0) scale(1, 1)";
   });
@@ -280,44 +309,57 @@ function openItem(imageButton, work) {
     overlay.style.height = tempHeight;
     overlay.style.left = `${frameRect.left - mainRect.left + (frameRect.width - overlay.offsetWidth) / 2}px`;
     overlay.style.top = `${frameRect.top - mainRect.top + (frameRect.height - overlay.offsetHeight) / 2}px`;
-    opening = false;
+    window.setTimeout(() => {
+      if (!overlay.isConnected) return;
+      overlay.classList.add("is-ready");
+      overlay.focus({ preventScroll: true });
+      opening = false;
+      root.removeAttribute("data-previewing");
+    }, settings.enlargeTransitionMs + 30);
   }, settings.enlargeTransitionMs);
 }
 
 function closeItem() {
+  if (opening || closing) return;
   const overlay = viewer.querySelector(".enlarge");
   if (!overlay || !focusedImage || !originalTileRect) return;
+  closing = true;
 
   const rootRect = root.getBoundingClientRect();
   const overlayRect = overlay.getBoundingClientRect();
-  const closing = document.createElement("div");
-  closing.className = "enlarge-closing";
-  closing.style.cssText = `position:absolute;left:${overlayRect.left - rootRect.left}px;top:${overlayRect.top - rootRect.top}px;width:${overlayRect.width}px;height:${overlayRect.height}px;z-index:9999;border-radius:var(--enlarge-radius, 32px);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:all ${settings.enlargeTransitionMs}ms ease-out;pointer-events:none;`;
-  closing.innerHTML = `<img src="${focusedWork.image}" alt="" />`;
-  root.append(closing);
+  const closingOverlay = document.createElement("div");
+  closingOverlay.className = "enlarge-closing";
+  closingOverlay.style.cssText = `position:absolute;left:${overlayRect.left - rootRect.left}px;top:${overlayRect.top - rootRect.top}px;width:${overlayRect.width}px;height:${overlayRect.height}px;z-index:9999;border-radius:var(--enlarge-radius, 32px);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.18);transition:all ${settings.enlargeTransitionMs}ms ease-out;pointer-events:none;`;
+  closingOverlay.innerHTML = `<img src="${focusedWork.image}" alt="" />`;
+  root.append(closingOverlay);
   overlay.remove();
 
   requestAnimationFrame(() => {
-    closing.style.left = `${originalTileRect.left - rootRect.left}px`;
-    closing.style.top = `${originalTileRect.top - rootRect.top}px`;
-    closing.style.width = `${originalTileRect.width}px`;
-    closing.style.height = `${originalTileRect.height}px`;
-    closing.style.opacity = "0";
+    closingOverlay.style.left = `${originalTileRect.left - rootRect.left}px`;
+    closingOverlay.style.top = `${originalTileRect.top - rootRect.top}px`;
+    closingOverlay.style.width = `${originalTileRect.width}px`;
+    closingOverlay.style.height = `${originalTileRect.height}px`;
+    closingOverlay.style.opacity = "0";
   });
 
   window.setTimeout(() => {
-    closing.remove();
+    const restoreFocus = focusedImage;
+    closingOverlay.remove();
     document.querySelectorAll(".item__image--reference").forEach((item) => item.remove());
     document.querySelectorAll(".item").forEach((item) => {
       item.style.setProperty("--rot-y-delta", "0deg");
       item.style.setProperty("--rot-x-delta", "0deg");
     });
-    focusedImage.style.visibility = "";
+    restoreFocus.style.visibility = "";
+    restoreFocus.focus({ preventScroll: true });
     focusedImage = null;
     focusedWork = null;
     originalTileRect = null;
     root.removeAttribute("data-enlarging");
+    root.removeAttribute("data-previewing");
     document.body.style.overflow = "";
+    closing = false;
+    opening = false;
   }, settings.enlargeTransitionMs + 30);
 }
 
@@ -369,6 +411,17 @@ main.addEventListener("pointercancel", () => {
 });
 
 scrim.addEventListener("click", closeItem);
+
+if (filterBar) {
+  filterBar.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (opening || closing || focusedImage) return;
+      filterBar.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      setFilter(button.dataset.filter);
+    });
+  });
+}
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && focusedImage) {

@@ -84,7 +84,13 @@ async function swap() {
 }
 
 cards.forEach((card) => {
-  card.addEventListener("click", swap);
+  card.addEventListener("click", () => {
+    if (card.classList.contains("is-front") && card.dataset.url) {
+      window.location.href = card.dataset.url;
+      return;
+    }
+    swap();
+  });
 });
 
 placeAll();

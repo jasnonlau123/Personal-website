@@ -8,18 +8,18 @@
       name="description"
       content="Liu YongKai 的个人网站，展示个人情况、文化传播、设计项目、学术研究与合作联系。"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260902-11" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
     <div class="scroll-progress" aria-hidden="true"></div>
     <div class="cursor-ring" aria-hidden="true"></div>
 
     <header class="site-header">
       <a class="brand" href="#home" aria-label="回到首页">LYK</a>
       <nav class="nav-links" aria-label="主要导航">
-        <a class="active" href="#about">关于</a>
         <a href="#culture">传播</a>
-        <a href="#design">项目</a>
+        <a href="#design">服务</a>
         <a href="#research">研究</a>
         <a href="#contact">合作</a>
       </nav>
@@ -29,7 +29,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <section id="home" class="hero section dotted-bg">
         <button class="hero-orb" type="button" aria-label="切换首页关键词">
           <span id="orb-text">创新</span>
@@ -61,7 +61,7 @@
             </ul>
           </article>
           <div class="identity-card reveal">
-            <img src="assets/profile-liu-yongkai.png" alt="Liu YongKai 个人形象照" />
+            <img src="网页素材/5e4ca25e47c5c3efcabfc9830e6ec1f7.png" alt="Liu YongKai 个人形象照" />
             <div>
               <span>Liu YongKai</span>
               <p>Culture · Design · Research</p>
@@ -70,201 +70,137 @@
         </div>
       </section>
 
-      <section id="culture" class="section stripe-bg">
-        <div class="section-title reveal">
+      <section id="culture" class="section culture-topics-section">
+        <div class="topics-title reveal">
           <h2>文化传播</h2>
-          <i></i>
         </div>
-        <div class="skill-stack">
-          <article class="skill-card reveal" data-url="city-text-memory.html" role="button" tabindex="0">
-            <header>
-              <span>CU</span>
+        <div class="culture-static reveal" aria-label="文化传播项目展示">
+          <a class="culture-lead-card" href="city-culture.html">
+            <img src="网页素材/文化传播-文字现象艺术展/未标题-1-02.png" alt="文字现象艺术展文化传播项目视觉" />
+          </a>
+          <div class="culture-right" aria-label="文化传播项目内容">
+            <a class="culture-right-card" href="city-text-memory.html">
               <div>
-                <h3>文化议题策划</h3>
-                <p>传统文化、城市记忆、青年社群与跨文化交流</p>
+                <span>城市文字记忆</span>
+                <p>以采集、分类与编辑的方式，建立关于城市文字、地方叙事与公共记忆的视觉档案。</p>
+                <time datetime="2026">2026</time>
               </div>
-            </header>
-            <div class="skill-stats">
-              <strong>3+</strong>
-              <strong>1</strong>
-              <strong>80%</strong>
-              <span>核心方向</span>
-              <span>持续研究</span>
-              <span>内容转译</span>
-            </div>
-            <button class="skill-more" type="button">查看细节</button>
-            <p class="skill-detail">可延展为活动主题策划、传播口径、视觉关键词、社媒栏目和线下体验路径。</p>
-          </article>
-          <article class="skill-card reveal">
-            <header>
-              <span>ME</span>
-              <div>
-                <h3>内容与媒介传播</h3>
-                <p>活动、展览、访谈、短视频与社媒内容整合</p>
+              <div class="culture-right-gallery" aria-hidden="true">
+                <img src="assets/城市文字记忆/14.png" alt="" />
+                <img src="assets/城市文字记忆/15.png" alt="" />
+                <img src="assets/城市文字记忆/03.png" alt="" />
               </div>
-            </header>
-            <div class="skill-stats">
-              <strong>12+</strong>
-              <strong>4</strong>
-              <strong>90%</strong>
-              <span>内容模块</span>
-              <span>媒介类型</span>
-              <span>叙事完整度</span>
-            </div>
-            <button class="skill-more" type="button">查看细节</button>
-            <p class="skill-detail">适合呈现你参与过的展览、讲座、媒体账号、短视频栏目或校园文化项目。</p>
-          </article>
-          <article class="skill-card reveal" data-url="poster-works.html" role="button" tabindex="0">
-            <header>
-              <span>VI</span>
-              <div>
-                <h3>视觉化表达</h3>
-                <p>海报、信息图、页面设计与文化内容可视化</p>
-              </div>
-            </header>
-            <div class="skill-stats">
-              <strong>5+</strong>
-              <strong>2</strong>
-              <strong>75%</strong>
-              <span>视觉形式</span>
-              <span>项目类型</span>
-              <span>传播适配</span>
-            </div>
-            <button class="skill-more" type="button">查看细节</button>
-            <p class="skill-detail">以视觉设计转译文化内涵，让传统记忆、地域符号与当代表达在图像中被重新看见。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="design" class="section projects-section">
-        <div class="section-title reveal">
-          <h2>设计项目</h2>
-          <i></i>
-        </div>
-        <div class="project-list">
-          <article
-            class="project-row reveal"
-            data-project="brand"
-            data-url="brand-identity.html"
-            role="button"
-            tabindex="0"
-          >
-            <div>
-              <h3>文化机构视觉识别</h3>
-              <div class="tags">
-                <span>Brand</span>
-                <span>Typography</span>
-                <span>Visual System</span>
-              </div>
-              <p>围绕文化机构的公共形象建立标志、字体、色彩、版式和应用系统。</p>
-              <small>2026</small>
-            </div>
-            <strong>01</strong>
-          </article>
-          <article
-            class="project-row reveal"
-            data-project="editorial"
-            data-url="city-culture.html"
-            role="button"
-            tabindex="0"
-          >
-            <div>
-              <h3>城市文化专题页面</h3>
-              <div class="tags">
-                <span>Editorial</span>
-                <span>Media</span>
-                <span>Storytelling</span>
-              </div>
-              <p>把城市文化议题拆解成可阅读、可浏览、可分享的图文叙事。</p>
-              <small>2025</small>
-            </div>
-            <strong>02</strong>
-          </article>
-          <article class="project-row reveal" data-project="digital" role="button" tabindex="0">
-            <div>
-              <h3>互动展览导览原型</h3>
-              <div class="tags">
-                <span>Interaction</span>
-                <span>Prototype</span>
-                <span>Exhibition</span>
-              </div>
-              <p>围绕观众动线、内容层级和触屏交互，构建展览导览的数字原型。</p>
-              <small>2025</small>
-            </div>
-            <strong>03</strong>
-          </article>
-        </div>
-      </section>
-
-      <section id="research" class="section research-section">
-        <div class="section-title reveal">
-          <h2>学术研究</h2>
-          <i></i>
-        </div>
-        <div class="research-shell reveal">
-          <div class="research-tabs">
-            <button class="active" type="button" data-topic="media">媒介与文化</button>
-            <button type="button" data-topic="design">设计研究</button>
-            <button type="button" data-topic="city">城市叙事</button>
+            </a>
           </div>
-          <article id="research-detail">
-            <span>Research Note</span>
-            <h3>媒介环境中的文化转译</h3>
-            <p class="research-body">
-              研究文化内容如何在社交媒体、视觉系统与公共空间中被重新编码，并影响受众的理解、参与和身份认同。
-            </p>
-          </article>
         </div>
       </section>
 
-      <section id="contact" class="section contact-section">
-        <div class="section-title reveal">
-          <h2>与我合作</h2>
-          <i></i>
+      <section id="design" class="section editorial-carousel-section design-service-section">
+        <div class="institutional-heading service-heading reveal">
+          <div><span>02 / PROJECTS</span><h2>设计服务</h2></div>
+          <a class="section-index-link" href="#design">PROJECTS 返回列表</a>
         </div>
-        <p class="contact-lead reveal">
-          期待与志同道合的伙伴一起，创造有意义的文化传播、视觉设计与研究项目。
-        </p>
-        <div class="cooperation-grid">
-          <article class="coop-card reveal">
-            <span>💡</span>
-            <h3>文化咨询</h3>
-            <p>文化议题策划、传播策略与项目定位。</p>
-            <a href="mailto:hello@example.com">了解更多 →</a>
-          </article>
-          <article class="coop-card reveal">
-            <span>🚀</span>
-            <h3>项目设计</h3>
-            <p>品牌视觉、页面体验与内容结构设计。</p>
-            <a href="mailto:hello@example.com">了解更多 →</a>
-          </article>
-          <article class="coop-card reveal">
-            <span>📣</span>
-            <h3>研究分享</h3>
-            <p>学术讨论、讲座分享与跨领域合作。</p>
-            <a href="mailto:hello@example.com">了解更多 →</a>
-          </article>
+        <div class="media-carousel reveal" data-carousel="services" data-autoplay="true" data-compact-controls="true" data-loop-fill="true" aria-label="设计服务图片轮播">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <a class="carousel-slide is-active" href="ditai-chun-logo.html">
+                <img src="网页素材/设计服务-帝台春标志/ChatGPT Image 2026年9月2日 16_20_58 (1).png" alt="帝台春标志设计" />
+                <div class="service-card-meta"><h3>帝台春标志</h3><span>广东 深圳</span><p>READ DETAILS</p></div>
+              </a>
+              <a class="carousel-slide" href="heritage-encyclopedia-logo.html">
+                <img src="网页素材/设计服务-传承人百科标志/ChatGPT Image 2026年9月2日 16_14_06 (1).png" alt="传承人百科标志设计" />
+                <div class="service-card-meta"><h3>传承人百科</h3><span>广东 深圳</span><p>READ DETAILS</p></div>
+              </a>
+              <a class="carousel-slide" href="brand-identity.html">
+                <img src="assets/home-carousel/cultural-gift.jpg" alt="孔子文化春节文创设计" />
+                <div class="service-card-meta"><h3>包装文创</h3><span>山东 济南</span><p>READ DETAILS</p></div>
+              </a>
+              <a class="carousel-slide" href="sdu-management-40th.html">
+                <img src="网页素材/设计服务-山东大学管理学院四十周年标志/ChatGPT Image 2026年9月2日 13_21_23 (5).png" alt="山东大学管理学院四十周年标志设计" />
+                <div class="service-card-meta"><h3>山东大学管理学院四十周年标志</h3><span>山东 济南</span><p>READ DETAILS</p></div>
+              </a>
+              <a class="carousel-slide" href="city-culture.html">
+                <img src="assets/hero-cultural-lab.png" alt="数字内容与页面体验设计" />
+                <div class="service-card-meta"><h3>数字体验</h3><span>山东 济南</span><p>READ DETAILS</p></div>
+              </a>
+              <a class="carousel-slide" href="northern-dynasties-buddha-stories.html">
+                <img src="网页素材/设计服务-北朝佛传图像故事研究/ChatGPT Image 2026年9月2日 19_26_22 (1).png" alt="北朝佛传图像故事研究设计" />
+                <div class="service-card-meta"><h3>北朝佛传图像故事研究</h3><span>山东 济南</span><p>READ DETAILS</p></div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-controls service-carousel-controls">
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="上一张">←</button>
+            <div class="carousel-dots" role="tablist" aria-label="选择设计服务图片"></div>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="下一张">→</button>
+          </div>
         </div>
-        <form class="contact-form reveal" id="contact-form">
-          <h3>快速联系</h3>
-          <input type="text" placeholder="您的姓名" aria-label="您的姓名" />
-          <input type="email" placeholder="邮箱地址" aria-label="邮箱地址" />
-          <textarea placeholder="留言内容" aria-label="留言内容"></textarea>
-          <button type="submit">发送消息 ✈</button>
-          <p id="toast" role="status" aria-live="polite"></p>
-        </form>
+      </section>
+
+      <section id="research" class="section editorial-carousel-section research-carousel-section">
+        <div class="institutional-heading research-heading reveal">
+          <div><span>03 / EXPERTISE</span><h2>学术研究</h2></div>
+          <p>以设计作为研究方法，关注媒介文化、文字转译、城市叙事与地方认同。</p>
+          <a class="section-index-link" href="#research">RESEARCH 返回列表</a>
+        </div>
+        <div class="media-carousel research-carousel reveal" data-carousel="research" data-autoplay="true" data-compact-controls="true" data-loop-fill="true" aria-label="学术研究图片轮播">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <a class="carousel-slide is-active" href="work-detail.html">
+                <img src="assets/research-pdf/page-098.png" alt="中文金属活字出版物发展概略信息图研究版面" />
+                <div><span>TYPE HISTORY · 1807—1879</span><h3>中文金属活字出版物发展概略信息图</h3><p>#印刷史　#中文活字　#信息可视化</p></div>
+              </a>
+              <a class="carousel-slide" href="work-detail.html">
+                <img src="assets/research-pdf/page-102.png" alt="汉字解构与重组研究版面" />
+                <div><span>TYPOGRAPHIC SEMANTICS</span><h3>汉字解构与重组</h3><p>#汉字语义　#字形重组　#视觉实验</p></div>
+              </a>
+              <a class="carousel-slide" href="work-detail.html">
+                <img src="assets/research-pdf/page-103.png" alt="参数化逻辑下的字体形态生成研究版面" />
+                <div><span>COMPUTATIONAL TYPE</span><h3>参数化逻辑下的字体形态生成</h3><p>#算法设计　#字体生成　#设计方法</p></div>
+              </a>
+              <a class="carousel-slide" href="city-text-memory.html">
+                <img src="assets/research-pdf/page-104.png" alt="城市文字记忆研究版面" />
+                <div><span>URBAN VISUAL HERITAGE</span><h3>城市文字记忆</h3><p>#城市叙事　#视觉文化遗产　#地方档案</p></div>
+              </a>
+              <a class="carousel-slide" href="work-detail.html">
+                <img src="assets/research-pdf/page-105.png" alt="塔林文字复刻计划研究版面" />
+                <div><span>OPEN-SOURCE TYPE</span><h3>塔林文字复刻计划</h3><p>#传统书体　#文字复刻　#开源计划</p></div>
+              </a>
+              <a class="carousel-slide" href="maquanwan-variable-font.html">
+                <img src="assets/research-pdf/page-106.png" alt="马圈湾汉简隶书可变字体设计研究版面" />
+                <div><span>VARIABLE TYPE</span><h3>马圈湾汉简隶书可变字体设计</h3><p>#汉简隶书　#可变字体　#传统文化</p></div>
+              </a>
+              <a class="carousel-slide" href="work-detail.html">
+                <img src="assets/research-pdf/page-107.png" alt="基于西文书写工具的汉字字体创新设计研究版面" />
+                <div><span>TYPOGRAPHIC INNOVATION</span><h3>基于西文书写工具的汉字字体创新设计</h3><p>#书写工具　#汉字字体　#设计创新</p></div>
+              </a>
+            </div>
+          </div>
+          <div class="carousel-controls research-carousel-controls">
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="上一张">←</button>
+            <div class="carousel-dots" role="tablist" aria-label="选择学术研究图片"></div>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="下一张">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="collab-section">
+        <footer class="site-footer">
+          <a class="footer-brand" href="#home" aria-label="回到首页">LYK</a>
+          <nav class="social-links" aria-label="社交媒体">
+            <span class="footer-contact-label">联系合作</span>
+            <a class="social-mark" href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.8V13h2.7v8h3.2Z" fill="currentColor"/></svg></a>
+            <a class="social-mark" href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.8 3h2.9l-6.4 7.3 7.5 10.7H17l-4.5-6.3L7 21H4.1l6.8-7.8L3.7 3h5.9L13.7 8.8 18.8 3Zm-1 16.2h1.6L8.7 4.7H7l10.8 14.5Z" fill="currentColor"/></svg></a>
+            <a class="social-mark" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.8" y="3.8" width="16.4" height="16.4" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
+            <button class="social-mark" type="button" data-wechat aria-label="WeChat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 5.1C6.2 5.1 3.4 7.4 3.4 10.2c0 1.6.9 3 2.4 4l-.5 2.1 2.4-1.3c.7.2 1.5.4 2.2.4 3.5 0 6.4-2.3 6.4-5.2S13.4 5.1 9.8 5.1Zm-2.4 4.3a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4.8 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm6.2 2.5c-2.3 0-4.2 1.5-4.2 3.5 0 1.9 1.9 3.5 4.2 3.5.5 0 1-.1 1.5-.2l1.7.9-.3-1.5c.8-.6 1.3-1.5 1.3-2.4 0-2-1.9-3.5-4.2-3.5Zm-1.5 2.5a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Zm3 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Z" fill="currentColor"/></svg></button>
+          </nav>
+          <p>Copyright © 2026 Liu YongKai. All rights reserved.</p>
+        </footer>
+        <button class="back-to-top" type="button" aria-label="回到顶部">TOP</button>
+        <p class="wechat-note" role="status" aria-live="polite"></p>
       </section>
     </main>
 
-    <dialog class="project-dialog" id="project-dialog">
-      <button class="dialog-close" type="button" aria-label="关闭">×</button>
-      <span id="dialog-kicker">Project</span>
-      <h2 id="dialog-title"></h2>
-      <p id="dialog-body"></p>
-      <nav class="project-submenu" id="project-submenu" aria-label="项目子菜单"></nav>
-      <div class="project-subpanel" id="project-subpanel"></div>
-    </dialog>
-
-    <script src="script.js"></script>
+    <script src="script.js?v=20260902-12"></script>
   </body>
 </html>
