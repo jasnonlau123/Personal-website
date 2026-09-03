@@ -221,7 +221,7 @@ function initCarousel(root) {
   let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches || root.dataset.autoplay === "false";
   let timer = null;
   let pointerStart = null;
-  let draggedAt = 0;
+  let draggedAt = -Infinity;
 
   sourceSlides.forEach((slide, slideIndex) => {
     const dot = document.createElement("button");
@@ -311,6 +311,13 @@ function initCarousel(root) {
     });
   }
   viewport.addEventListener("pointerdown", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    // Leave project links to native navigation; only capture empty-space drags.
+    if (target?.closest("a")) {
+      pointerStart = null;
+      return;
+    }
+
     pointerStart = { x: event.clientX, id: event.pointerId };
     viewport.setPointerCapture(event.pointerId);
   });
