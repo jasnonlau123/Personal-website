@@ -1,0 +1,173 @@
+.solar-terms-page {
+  --solar-ink: #152019;
+  --solar-paper: #f5f4ef;
+  --solar-red: #ae2421;
+  background: var(--solar-paper);
+}
+
+.solar-terms-page .project-hero {
+  min-height: min(100svh, 920px);
+}
+
+.solar-terms-page .hero-shade {
+  background: rgba(16, 26, 18, 0.42);
+}
+
+.solar-terms-page .hero-copy h1 {
+  white-space: normal;
+}
+
+.solar-terms-page .project-introduction {
+  padding-bottom: clamp(75px, 9vw, 135px);
+}
+
+.solar-notes {
+  padding: clamp(80px, 9vw, 145px) max(24px, calc((100% - 1200px) / 2));
+  background: #152019;
+  color: #f7f5ec;
+}
+
+.solar-notes-heading,
+.solar-notes-copy {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.solar-notes-heading {
+  width: 56%;
+}
+
+.solar-notes-heading h2 {
+  margin: 18px 0 0;
+  font-size: clamp(34px, 4.4vw, 66px);
+  line-height: 1.13;
+  letter-spacing: -0.06em;
+}
+
+.solar-notes-copy {
+  width: 39%;
+  padding-top: 52px;
+  margin-left: 4%;
+  color: rgba(247, 245, 236, 0.84);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.9;
+}
+
+.solar-notes-copy p { margin: 0; }
+
+.solar-notes blockquote {
+  margin: 36px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(247, 245, 236, 0.32);
+  color: #fff;
+  font-size: clamp(18px, 1.55vw, 24px);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.solar-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: clamp(58px, 8vw, 105px);
+  border-top: 1px solid rgba(247, 245, 236, 0.32);
+}
+
+.solar-feature-grid article {
+  min-height: 250px;
+  padding: 26px 28px 0 0;
+}
+
+.solar-feature-grid article + article {
+  padding-left: 28px;
+  border-left: 1px solid rgba(247, 245, 236, 0.32);
+}
+
+.solar-feature-grid span {
+  color: #b6d34b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.solar-feature-grid h3 {
+  margin: 48px 0 16px;
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.35;
+}
+
+.solar-feature-grid p {
+  margin: 0;
+  color: rgba(247, 245, 236, 0.7);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.solar-gallery {
+  padding: clamp(82px, 9vw, 145px) 0;
+  background: var(--solar-paper);
+}
+
+.solar-gallery-heading { margin-bottom: 42px; }
+
+.solar-poster-wall {
+  width: min(1440px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1px;
+  background: #d6d4cd;
+}
+
+.solar-poster-wall figure {
+  position: relative;
+  aspect-ratio: 1191 / 1616;
+  margin: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.solar-poster-wall img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.solar-poster-wall figure:hover img { transform: scale(1.045); }
+
+.solar-poster-wall figcaption {
+  position: absolute;
+  right: 9px;
+  bottom: 8px;
+  padding: 3px 6px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--solar-ink);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.solar-closing img { object-position: center; }
+
+@media (max-width: 800px) {
+  .solar-notes { padding: 72px 20px; }
+  .solar-notes-heading,
+  .solar-notes-copy { display: block; width: 100%; margin-left: 0; }
+  .solar-notes-copy { padding-top: 30px; }
+  .solar-feature-grid { grid-template-columns: 1fr 1fr; }
+  .solar-feature-grid article:nth-child(3) { border-left: 0; }
+  .solar-feature-grid article { min-height: 210px; padding: 22px 18px 0 0; }
+  .solar-feature-grid article + article { padding-left: 18px; }
+  .solar-feature-grid h3 { margin-top: 32px; }
+  .solar-poster-wall { width: min(100% - 40px, 620px); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .solar-feature-grid { grid-template-columns: 1fr; }
+  .solar-feature-grid article,
+  .solar-feature-grid article + article,
+  .solar-feature-grid article:nth-child(3) { min-height: auto; padding: 22px 0; border-left: 0; border-bottom: 1px solid rgba(247, 245, 236, 0.32); }
+  .solar-poster-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

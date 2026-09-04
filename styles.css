@@ -3433,6 +3433,7 @@ body {
 
 .culture-lead-copy time,
 .culture-release-card time,
+.culture-archive-card time,
 .culture-notes-card time {
   display: block;
   margin-top: 0.8rem;
