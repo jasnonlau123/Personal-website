@@ -14,8 +14,8 @@ const wechatNote = document.querySelector(".wechat-note");
 const backToTop = document.querySelector(".back-to-top");
 
 const orbWords = {
-  zh: ["创新", "传播", "设计", "研究", "叙事"],
-  en: ["Create", "Media", "Design", "Study", "Story"],
+  zh: ["创新", "设计", "文化", "研究", "传播"],
+  en: ["Create", "Design", "Culture", "Research", "Media"],
 };
 
 const copy = {
@@ -129,6 +129,26 @@ const copy = {
 
 let currentLanguage = "zh";
 let orbIndex = 0;
+let orbRotationTimer;
+
+function renderOrbWord({ animate = true } = {}) {
+  orbText.textContent = orbWords[currentLanguage][orbIndex];
+  if (!animate) return;
+
+  orbText.classList.remove("is-switching");
+  void orbText.offsetWidth;
+  orbText.classList.add("is-switching");
+}
+
+function advanceOrbWord() {
+  orbIndex = (orbIndex + 1) % orbWords[currentLanguage].length;
+  renderOrbWord();
+}
+
+function startOrbRotation() {
+  window.clearInterval(orbRotationTimer);
+  orbRotationTimer = window.setInterval(advanceOrbWord, 2800);
+}
 
 function updateScrollProgress() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -182,9 +202,17 @@ finePointer.addEventListener("change", () => {
 });
 
 heroOrb.addEventListener("click", () => {
-  orbIndex = (orbIndex + 1) % orbWords[currentLanguage].length;
-  orbText.textContent = orbWords[currentLanguage][orbIndex];
+  advanceOrbWord();
+  startOrbRotation();
   heroOrb.classList.toggle("is-centered");
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    window.clearInterval(orbRotationTimer);
+  } else {
+    startOrbRotation();
+  }
 });
 
 const carouselApis = [];
@@ -370,7 +398,8 @@ function applyLanguage(language) {
     link.textContent = text.nav[index];
   });
   heroOrb.setAttribute("aria-label", text.orbAria);
-  orbText.textContent = orbWords[language][orbIndex % orbWords[language].length];
+  orbIndex %= orbWords[language].length;
+  renderOrbWord({ animate: false });
   document.querySelector(".hero-content p").textContent = text.heroSubtitle;
   document.querySelector(".scroll-hint").textContent = text.scrollHint;
   document.querySelector("#about .section-title h2").textContent = text.aboutTitle;
@@ -438,3 +467,4 @@ const navObserver = new IntersectionObserver(
 sections.forEach((section) => navObserver.observe(section));
 
 applyLanguage("zh");
+startOrbRotation();

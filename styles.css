@@ -285,6 +285,34 @@ textarea {
   transform: translate(-50%, -50%);
 }
 
+#orb-text {
+  display: inline-grid;
+  min-width: 2.8em;
+  place-items: center;
+}
+
+#orb-text.is-switching {
+  animation: orb-word-switch 420ms ease both;
+}
+
+@keyframes orb-word-switch {
+  from {
+    opacity: 0;
+    transform: translateY(0.2em) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #orb-text.is-switching {
+    animation: none;
+  }
+}
+
 .scroll-hint {
   position: absolute;
   left: 50%;
