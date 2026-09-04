@@ -3597,6 +3597,14 @@ body {
   content: "→";
   font-size: 1rem;
   place-items: center;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.design-service-section .carousel-slide:hover .service-card-meta p::before,
+.design-service-section .carousel-slide:focus-visible .service-card-meta p::before {
+  border-color: var(--artboard-blue);
+  background: var(--artboard-blue);
+  color: #fff;
 }
 
 .profile-list {
