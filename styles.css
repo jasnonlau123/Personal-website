@@ -3383,14 +3383,16 @@ body {
 
 .culture-release-column {
   display: grid;
-  grid-template-rows: 0.56fr 0.44fr;
-  height: 100%;
+  align-self: stretch;
+  grid-template-rows: minmax(0, 0.56fr) minmax(0, 0.44fr);
+  min-height: 0;
   min-width: 0;
 }
 
 /* Keep both columns of the culture news group locked to the same bottom edge. */
 .culture-right-group > .culture-notes-card {
-  height: 100%;
+  align-self: stretch;
+  min-height: 0;
 }
 
 .culture-lead-card {
@@ -3464,6 +3466,7 @@ body {
 
 .culture-release-card {
   border-right: 0;
+  min-height: 0;
 }
 
 .culture-release-top,
@@ -3498,6 +3501,7 @@ body {
   grid-template-columns: minmax(0, 0.58fr) minmax(130px, 0.42fr);
   border-top: 0;
   border-right: 0;
+  min-height: 0;
 }
 
 .culture-archive-card > div {
