@@ -5,6 +5,7 @@
 }
 
 .maquanwan-page { --research-green: #59c65b; --research-ink: #111; --research-paper: #fbfbf8; }
+.western-type-page { --research-green: #5f83b8; }
 .maquanwan-page .project-header { background: rgba(255, 255, 255, .96); }
 .font-hero { position: relative; min-height: 100svh; overflow: hidden; color: #fff; background: #141510; }
 .font-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.9); }
@@ -14,6 +15,16 @@
 .font-hero-copy p, .maquanwan-page .eyebrow { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .13em; }
 .font-hero-copy h1 { margin: 20px 0; font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: clamp(42px, 4vw, 72px); font-weight: 700; line-height: 1.1; letter-spacing: -.06em; white-space: nowrap; }
 .font-hero-copy span { font-size: 17px; }
+.western-type-page .font-hero-copy h1 {
+  max-width: 18ch;
+  font-size: clamp(38px, 4.1vw, 66px);
+  white-space: normal;
+}
+.western-type-page .film-heading h2,
+.western-type-page .gallery-intro h2 {
+  font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 700;
+}
 
 .research-summary, .research-film, .research-gallery { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
 .research-summary { padding: clamp(100px, 12vw, 190px) 0; }
