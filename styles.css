@@ -3389,7 +3389,7 @@ body {
   position: relative;
   display: block;
   overflow: hidden;
-  background: var(--artboard-blue);
+  background: #fff;
 }
 
 .culture-lead-card img {
@@ -3409,6 +3409,7 @@ body {
   inset: auto 0 0;
   min-height: 30%;
   padding: clamp(1rem, 1.7vw, 1.6rem);
+  background: var(--artboard-blue);
   color: #fff;
 }
 
