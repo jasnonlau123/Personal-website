@@ -1,49 +1,52 @@
-# Portfolio Layout Design QA
+# Design QA: 城市文字记忆
 
-## Comparison Target
+## Source truth
 
-- Source visual truth: `/Users/jasonlau/Downloads/1x/画板 1.png`
-- Source pixels: 1920 x 5228.
-- Implementation: `http://127.0.0.1:4173/`
-- Implementation capture: in-app browser capture at a desktop browser viewport, viewed during this task.
-- State: Chinese home page with all sections rendered; each content section uses manual carousel controls. The academic-research and footer corrections were revalidated in the in-app browser.
+- Primary project board: `/Users/jasonlau/Downloads/7565966b-315e-43b0-a0d1-93b59a1016ae.png` (1024 x 1536 px).
+- Browser Comment 1 reference: Apple Photos-style depth gallery with a dominant center image and perspective side previews.
+- Browser Comment 2 reference: dotted China map with city markers and an adjacent city image strip.
+- Generated map asset: `网页素材/文化传播-城市文字记忆/china-city-map-dots.png` (1536 x 1024 px).
 
-## Full-View Comparison Evidence
+## Implementation evidence
 
-The implementation now follows the supplied artboard across the full page: compact fixed header, dotted hero with offset circular keyword, large editorial about section, gray cultural-content panel, white design-service rail, white academic-research rail, and a compact social footer. Culture, design services, and academic research share the same manual carousel grammar. The design-service primary card is fixed to `896 x 560 px`.
+- Runtime URL used only for QA: `http://127.0.0.1:4173/city-text-memory.html?v=20260907-3`.
+- User-facing page: `file:///Users/jasonlau/Documents/个人网站/city-text-memory.html`.
+- Implementation screenshots: Codex in-app browser runtime captures from tab 8; desktop default viewport and mobile 390 x 844 CSS px at device scale factor 1.
+- State: gallery default and advanced image states, city map, footer, and mobile responsive states.
 
-## Focused Region Comparison Evidence
+## Full-view comparison
 
-- `#design .carousel-slide` measured `896 x 560` CSS px before responsive scaling.
-- The cultural group measured `1072 x 620` CSS px in the rendered viewport and uses the artboard's three-column editorial card hierarchy.
-- Culture, design services, and academic research all advance via their next arrows; design dot navigation selects project index `2` directly.
-- All three carousels remain stable after a timed check because they are manual, matching the artboard's browsing-oriented interaction.
-- The language switch changes “设计服务” to “Design Services” and “学术研究” to “Academic Research” while retaining compact arrow controls.
+- The page retains the reference board's restrained black, white, and pale-gray editorial system.
+- The archive browser now uses a dominant center image with progressively smaller, perspective-rotated side images instead of a flat row.
+- The city section replaces the bordered city table with a light-gray dotted China map and geographically positioned interactive city markers.
+- The title reads `WHERE / TYPE / LIVE`, preserving the reference's three-line hierarchy.
+- The footer social row matches the homepage's centered inline alignment.
 
-## Fidelity Surfaces
+## Focused comparison
 
-- Fonts and typography: the hero, section headings, labels, and card copy now use the same editorial scale and weight hierarchy throughout the page.
-- Spacing and layout rhythm: the page uses a shared wide frame, consistent section padding, and a centered `896 x 560` primary service card with narrow neighboring previews.
-- Colors and visual tokens: white section background, soft gray controls, restrained black type, and a blue hover/active accent follow the supplied artboard.
-- Image quality and asset fidelity: existing portfolio images are used directly with `object-fit: cover`; no placeholder imagery is present.
-- Copy and content: reference copy has been replaced with portfolio-specific project content while preserving the source composition.
+- Gallery: center image is 52% desktop width and 76% mobile width; side images overlap in depth without flattening into a grid. Arrow, side-image, keyboard, and drag navigation remain available.
+- Map: markers for 北京、济南、青岛、上海、广州、淄博、西安、成都 are readable and select the corresponding archive filter.
+- Footer: the contact label and four icons share the same 1.8rem alignment box and vertical center.
+- Mobile: 390 px viewport has `scrollWidth` 390 px; gallery rail and map are both 350 px wide, with no horizontal page overflow.
 
-## Findings
+## Interaction verification
 
-No actionable P0, P1, or P2 findings in the corrected desktop state.
+- Next navigation advanced the archive counter from `01` to `02`.
+- Center image opened the lightbox and the close control restored the page.
+- 北京 map marker selected the 北京 filter and reduced the archive to `03` matching items.
+- The current browser-rendered accessibility tree reports `26` total archive images, the new `城市文字记忆_画板 1.jpg` entry, and matching 淄博 controls in both filter and map sections.
+- Browser console warnings/errors: none.
 
-## Interaction Checks
+## Comparison history
 
-- Previous/next arrows switch the active culture, design-service, and research content.
-- Dot navigation selects design-service projects directly.
-- Swipe interaction remains available through the existing carousel pointer handling.
-- All three carousels are manual, with autoplay disabled.
-- Chinese/English switch and console-error checks passed.
-- The footer contains a large LYK mark, a centered collaboration and social group, right-aligned copyright, and a blue back-to-top control.
-- The academic research rail uses seven original academic-research pages rendered from the supplied PDF, rather than the former design-project placeholders.
+- P1: original archive browser displayed seven images as a flat strip. Fixed with absolute depth positioning, perspective transforms, center-image dominance, and swipe support. Post-fix evidence shows the layered album composition on desktop and mobile.
+- P1: original city section used a bordered city table. Fixed with a dedicated dotted-map image and interactive geographic markers. Post-fix evidence shows the map and city image strip side by side.
+- P2: English heading used `WORDS`; changed to `TYPE` and restored the three-line title structure.
+- P2: footer icons sat slightly below the contact label. Fixed by sharing a centered 1.8rem alignment box.
+- P2: the newly added `城市文字记忆_画板 1.jpg` asset was absent from the archive. Added it as item 26 with temporary copy that can be replaced later.
+- P2: the footer WeChat path only rendered one chat bubble. Replaced both page instances with the complete two-bubble homepage icon.
+- P2: the city taxonomy still used 深圳. Replaced it with 淄博 across the filter, archive data, and map marker.
 
-## Follow-up Polish
+## Final result
 
-- The supplied source is taller than a single browser viewport; future refinements can focus on pixel-level differences in an individual section at the same 1920px canvas width.
-
-final result: passed
+passed

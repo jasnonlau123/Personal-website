@@ -1,101 +1,197 @@
 <!doctype html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>城市文字记忆 | Liu YongKai</title>
-    <meta name="description" content="Liu YongKai 的城市文字记忆项目，以动态档案堆叠展示城市文字样本。" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="brand-identity.css" />
-    <link rel="stylesheet" href="city-memory.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="城市文字记忆，以影像保存街头招牌、手写字与公共标识中的地方文化痕迹。" />
+    <title>城市文字记忆 | LYK</title>
+    <link rel="stylesheet" href="sdu-management-40th.css" />
+    <link rel="stylesheet" href="city-text-memory.css?v=20260907-3" />
   </head>
-  <body class="project-detail-page city-memory-page">
-    <header class="site-header">
-      <a class="brand" href="index.html#home" aria-label="回到首页">LYK</a>
-      <nav class="nav-links" aria-label="主要导航">
-        <a href="index.html#about">关于</a>
-        <a class="active" href="index.html#culture">传播</a>
-        <a href="index.html#design">项目</a>
+  <body class="project-detail-page city-text-page">
+    <header class="project-header">
+      <a class="project-brand brand" href="index.html#home" aria-label="回到首页">LYK</a>
+      <nav class="project-nav nav-links" aria-label="主要导航">
+        <a href="index.html#culture" aria-current="page">传播</a>
+        <a href="index.html#design">服务</a>
         <a href="index.html#research">研究</a>
         <a href="index.html#contact">合作</a>
       </nav>
-      <div class="header-meta">
+      <div class="project-header-side header-meta">
         <span>山东 济南</span>
-        <a class="language-button detail-home-link" href="index.html#culture">返回</a>
+        <a class="language-button memory-back-link" href="index.html#culture" aria-label="返回文化传播">返回</a>
       </div>
     </header>
 
     <main>
-      <section class="memory-section" aria-labelledby="gallery-title">
-        <div class="gallery-heading memory-heading">
-          <div>
-            <span class="detail-kicker">Archive</span>
-            <h2 id="gallery-title">城市文字记忆</h2>
-          </div>
-          <p>拖拽浏览城市文字样本，点击居中图片查看拍摄时间、地点与背景。后续可替换为你的真实项目资料。</p>
+      <section class="memory-hero" aria-label="城市文字记忆项目首屏">
+        <img src="网页素材/文化传播-城市文字记忆/ChatGPT Image 2026年9月6日 15_59_28.png" alt="老街招牌上的城市文字记忆项目主视觉" />
+        <div class="memory-hero-meta" aria-label="项目资料">
+          <div><span>PROJECT</span><strong>城市文字记忆</strong></div>
+          <div><span>TYPE</span><strong>Photography / Archive</strong></div>
+          <div><span>SINCE</span><strong>2023</strong></div>
+          <div><span>STATUS</span><strong>Ongoing</strong></div>
+          <div class="memory-hero-location"><span>JINAN / SHANDONG</span><strong>地方文字视觉档案</strong></div>
         </div>
-
-        <div class="memory-stage" id="memory-stage">
-          <div id="circular-gallery" class="circular-gallery" aria-label="城市文字记忆循环画廊"></div>
-        </div>
-
-        <dialog class="memory-detail-dialog" id="memory-detail-dialog" aria-labelledby="memory-detail-title">
-          <button class="memory-dialog-close" id="memory-dialog-close" type="button" aria-label="关闭图片信息">×</button>
-          <div class="memory-detail-layout">
-            <figure class="memory-detail-media">
-              <img id="memory-detail-image" src="" alt="" />
-            </figure>
-            <article class="memory-detail-copy">
-              <span class="detail-kicker">Text Memory</span>
-              <h3 id="memory-detail-title">城市文字样本</h3>
-              <dl class="memory-detail-meta">
-                <div>
-                  <dt>拍摄时间</dt>
-                  <dd id="memory-detail-date">待补充</dd>
-                </div>
-                <div>
-                  <dt>拍摄地点</dt>
-                  <dd id="memory-detail-location">待补充</dd>
-                </div>
-              </dl>
-              <div class="memory-detail-background">
-                <span>拍摄背景</span>
-                <p id="memory-detail-background">待补充</p>
-              </div>
-            </article>
-          </div>
-        </dialog>
+        <a class="memory-scroll" href="#introduction">向下阅读 <span aria-hidden="true">↓</span></a>
       </section>
 
-      <section class="graphic-memory-section" aria-labelledby="graphic-memory-title">
-        <div class="gallery-heading memory-heading">
-          <div>
-            <span class="detail-kicker">Graphic Archive</span>
-            <h2 id="graphic-memory-title">城市图形记忆</h2>
+      <section class="memory-introduction" id="introduction" aria-labelledby="intro-title">
+        <div class="memory-intro-grid">
+          <div class="memory-intro-main">
+            <p class="memory-eyebrow">PROJECT INTRODUCTION / 2023</p>
+            <h1 id="intro-title">一座城市如何书写自己，<br />也决定了它如何被记住。</h1>
+            <p class="memory-lead">城市文化记忆，不只存在于建筑与街道，也藏在一块旧招牌、一行手写字和一面褪色的墙上。这些文字曾经参与城市的日常生活，也记录着不同时期的审美、商业方式与地方经验。通过持续拍摄、收集与整理，我试图保存这些正在消失的视觉痕迹，让城市中被忽略的文字重新成为可阅读的文化记忆。</p>
           </div>
-          <p>记录城市中的图案、符号、公共标识、墙面纹理与空间图形。后续可继续加入你的城市观察与设计转译。</p>
+          <aside class="memory-intro-aside" aria-label="项目标签与分享">
+            <div>
+              <p class="memory-aside-label">项目内容</p>
+              <ul class="memory-tag-list">
+                <li>城市文化</li>
+                <li>文字档案</li>
+                <li>影像记录</li>
+              </ul>
+            </div>
+            <div>
+              <p class="memory-aside-label">分享</p>
+              <div class="share-links">
+                <a class="social-mark" href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="分享到 Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.8V13h2.7v8h3.2Z" fill="currentColor"/></svg></a>
+                <a class="social-mark" href="https://x.com/" target="_blank" rel="noreferrer" aria-label="分享到 X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.8 3h2.9l-6.4 7.3 7.5 10.7H17l-4.5-6.3L7 21H4.1l6.8-7.8L3.7 3h5.9L13.7 8.8 18.8 3Zm-1 16.2h1.6L8.7 4.7H7l10.8 14.5Z" fill="currentColor"/></svg></a>
+                <a class="social-mark" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="分享到 Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.8" y="3.8" width="16.4" height="16.4" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
+                <a class="social-mark" href="#contact" aria-label="分享到 WeChat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 5.1C6.2 5.1 3.4 7.4 3.4 10.2c0 1.6.9 3 2.4 4l-.5 2.1 2.4-1.3c.7.2 1.5.4 2.2.4 3.5 0 6.4-2.3 6.4-5.2S13.4 5.1 9.8 5.1Zm-2.4 4.3a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4.8 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm6.2 2.5c-2.3 0-4.2 1.5-4.2 3.5 0 1.9 1.9 3.5 4.2 3.5.5 0 1-.1 1.5-.2l1.7.9-.3-1.5c.8-.6 1.3-1.5 1.3-2.4 0-2-1.9-3.5-4.2-3.5Zm-1.5 2.5a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Zm3 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Z" fill="currentColor"/></svg></a>
+              </div>
+            </div>
+          </aside>
         </div>
 
-        <div class="graphic-memory-grid">
-          <article class="graphic-memory-card">
-            <span>01</span>
-            <h3>公共符号</h3>
-            <p>街区中的导视、告示与公共图形。</p>
-          </article>
-          <article class="graphic-memory-card">
-            <span>02</span>
-            <h3>墙面纹理</h3>
-            <p>旧墙、涂层、痕迹和时间肌理。</p>
-          </article>
-          <article class="graphic-memory-card">
-            <span>03</span>
-            <h3>街道图案</h3>
-            <p>铺装、门面、橱窗与城市节奏。</p>
-          </article>
+        <dl class="memory-specs">
+          <div><dt>项目名称</dt><dd>城市文字记忆</dd></div>
+          <div><dt>项目类型</dt><dd>城市文化、摄影记录、视觉档案</dd></div>
+          <div><dt>项目地点</dt><dd>中国，山东省济南市</dd></div>
+          <div><dt>项目时间</dt><dd>2023</dd></div>
+          <div><dt>项目范围</dt><dd>街头招牌、手写字、墙体文字与公共标识的持续采集</dd></div>
+        </dl>
+      </section>
+
+      <section class="memory-filters" aria-labelledby="archive-title">
+        <div class="memory-section-heading">
+          <div>
+            <p class="memory-eyebrow">VISUAL ARCHIVE</p>
+            <h2 id="archive-title">城市文字视觉档案</h2>
+          </div>
+          <p>ORDINARY WORDS<br />EXTRAORDINARY CITIES</p>
+        </div>
+        <div class="memory-filter-panel">
+          <div class="memory-filter-label"><strong>分类筛选</strong><span>FILTER</span></div>
+          <div class="memory-filter-buttons" data-filter-group="type" aria-label="按文字类型筛选">
+            <button class="is-active" type="button" data-filter="all" aria-pressed="true">全部 <span>26</span></button>
+            <button type="button" data-filter="sign">招牌</button>
+            <button type="button" data-filter="hand">手写字</button>
+            <button type="button" data-filter="wall">墙面文字</button>
+            <button type="button" data-filter="shop">店铺门头</button>
+            <button type="button" data-filter="public">公共标识</button>
+          </div>
+          <div class="memory-filter-label"><strong>按城市浏览</strong><span>BY CITY</span></div>
+          <div class="memory-filter-buttons memory-city-buttons" data-filter-group="city" aria-label="按城市筛选">
+            <button class="is-active" type="button" data-filter="all" aria-pressed="true">全部</button>
+            <button type="button" data-filter="济南">济南</button>
+            <button type="button" data-filter="青岛">青岛</button>
+            <button type="button" data-filter="北京">北京</button>
+            <button type="button" data-filter="上海">上海</button>
+            <button type="button" data-filter="广州">广州</button>
+            <button type="button" data-filter="淄博">淄博</button>
+            <button type="button" data-filter="西安">西安</button>
+            <button type="button" data-filter="成都">成都</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="memory-browser" aria-labelledby="browser-title">
+        <div class="memory-browser-heading">
+          <div>
+            <p class="memory-eyebrow">ARCHIVE BROWSER</p>
+            <h2 id="browser-title">图片浏览</h2>
+          </div>
+          <p>点击两侧图像或拖动切换档案，点击中间图像可放大查看。</p>
+        </div>
+        <div class="memory-browser-stage">
+          <button class="memory-browser-arrow" type="button" data-memory-prev aria-label="上一张">←</button>
+          <div class="memory-browser-rail" id="memory-browser-rail" aria-live="polite"></div>
+          <button class="memory-browser-arrow" type="button" data-memory-next aria-label="下一张">→</button>
+        </div>
+        <div class="memory-browser-caption">
+          <div><strong id="memory-active-city">济南 / JINAN</strong><span id="memory-active-date">2023</span></div>
+          <p><strong id="memory-active-title">城市文字样本</strong><span id="memory-active-description">文字依附于街道、商铺与公共空间，也在长期使用中形成独特的地方视觉语言。</span></p>
+          <div class="memory-browser-count"><b id="memory-current">01</b><span>/</span><span id="memory-total">26</span></div>
+        </div>
+        <p class="memory-empty" id="memory-empty" hidden>当前筛选条件下暂无档案，请选择其他类别或城市。</p>
+      </section>
+
+      <section class="memory-features" aria-labelledby="features-title">
+        <div class="memory-section-heading memory-features-heading">
+          <div>
+            <p class="memory-eyebrow">ARCHIVE METHOD</p>
+            <h2 id="features-title">从个体记录走向<br />公共传播</h2>
+          </div>
+          <blockquote>文字留在街道上，也留在一座城市的记忆里。</blockquote>
+        </div>
+        <div class="memory-feature-grid">
+          <article><span>01</span><h3>文字作为城市记忆的入口</h3><p>从旧招牌、手写字、墙体文字与公共标识出发，观察文字与街道、行业、年代和生活方式之间的关系。</p></article>
+          <article><span>02</span><h3>以影像建立视觉档案</h3><p>通过持续的现场拍摄、分类与编辑，将容易随城市更新而消失的文字景观转化为长期保存的视觉资料。</p></article>
+          <article><span>03</span><h3>关注民间书写与非标准字体</h3><p>保留手工痕迹、地域习惯和时代特征，让“不标准”的字形呈现真实而丰富的城市视觉文化。</p></article>
+          <article><span>04</span><h3>让地方记忆再次被看见</h3><p>通过网站、影像与视觉设计的重新组织，使原本只存在于街巷中的文字进入新的传播环境。</p></article>
+        </div>
+      </section>
+
+      <section class="memory-cities" aria-labelledby="cities-title">
+        <div class="memory-city-intro">
+          <p class="memory-eyebrow">CITY INDEX</p>
+          <h2 id="cities-title">WHERE<br />TYPE<br />LIVE<br /><span>文字发生的地方</span></h2>
+          <p>在不同的城市，文字以不同的形式存在，记录着各地的生活方式、地方文化与集体记忆。</p>
+          <a href="#archive-title">VIEW ALL ARCHIVES <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="memory-city-map" aria-label="中国城市文字档案地图">
+          <img src="网页素材/文化传播-城市文字记忆/china-city-map-dots.png" alt="中国地图上的城市文字档案分布" />
+          <button class="memory-city-marker memory-city-marker--beijing" type="button" data-city-jump="北京"><span aria-hidden="true"></span>北京</button>
+          <button class="memory-city-marker memory-city-marker--jinan" type="button" data-city-jump="济南"><span aria-hidden="true"></span>济南</button>
+          <button class="memory-city-marker memory-city-marker--qingdao" type="button" data-city-jump="青岛"><span aria-hidden="true"></span>青岛</button>
+          <button class="memory-city-marker memory-city-marker--shanghai" type="button" data-city-jump="上海"><span aria-hidden="true"></span>上海</button>
+          <button class="memory-city-marker memory-city-marker--guangzhou" type="button" data-city-jump="广州"><span aria-hidden="true"></span>广州</button>
+          <button class="memory-city-marker memory-city-marker--zibo" type="button" data-city-jump="淄博"><span aria-hidden="true"></span>淄博</button>
+          <button class="memory-city-marker memory-city-marker--xian" type="button" data-city-jump="西安"><span aria-hidden="true"></span>西安</button>
+          <button class="memory-city-marker memory-city-marker--chengdu" type="button" data-city-jump="成都"><span aria-hidden="true"></span>成都</button>
+        </div>
+        <div class="memory-city-gallery">
+          <figure><img src="网页素材/文化传播-城市文字记忆/城市文字记忆-05.jpg" alt="北京城市文字" /><figcaption>北京</figcaption></figure>
+          <figure><img src="网页素材/文化传播-城市文字记忆/城市文字记忆-14.jpg" alt="济南城市文字" /><figcaption>济南</figcaption></figure>
+          <figure><img src="网页素材/文化传播-城市文字记忆/城市文字记忆-18.jpg" alt="青岛城市文字" /><figcaption>青岛</figcaption></figure>
+          <figure><img src="网页素材/文化传播-城市文字记忆/城市文字记忆-21.jpg" alt="上海城市文字" /><figcaption>上海</figcaption></figure>
+          <figure><img src="网页素材/文化传播-城市文字记忆/城市文字记忆-23.jpg" alt="广州城市文字" /><figcaption>广州</figcaption></figure>
         </div>
       </section>
     </main>
 
-    <script src="city-memory.js"></script>
+    <dialog class="memory-lightbox" aria-labelledby="memory-lightbox-title">
+      <div class="memory-lightbox-frame">
+        <button class="memory-lightbox-close" type="button" aria-label="关闭图片预览">×</button>
+        <figure>
+          <img src="" alt="" />
+          <figcaption id="memory-lightbox-title"></figcaption>
+        </figure>
+      </div>
+    </dialog>
+
+    <footer class="project-footer" id="contact">
+      <a class="footer-brand" href="index.html#home" aria-label="回到首页">LYK</a>
+      <nav class="social-links" aria-label="社交媒体">
+        <span class="footer-contact-label">联系合作</span>
+        <a class="social-mark" href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.8V13h2.7v8h3.2Z" fill="currentColor"/></svg></a>
+        <a class="social-mark" href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.8 3h2.9l-6.4 7.3 7.5 10.7H17l-4.5-6.3L7 21H4.1l6.8-7.8L3.7 3h5.9L13.7 8.8 18.8 3Zm-1 16.2h1.6L8.7 4.7H7l10.8 14.5Z" fill="currentColor"/></svg></a>
+        <a class="social-mark" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.8" y="3.8" width="16.4" height="16.4" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
+        <a class="social-mark" href="#contact" aria-label="WeChat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 5.1C6.2 5.1 3.4 7.4 3.4 10.2c0 1.6.9 3 2.4 4l-.5 2.1 2.4-1.3c.7.2 1.5.4 2.2.4 3.5 0 6.4-2.3 6.4-5.2S13.4 5.1 9.8 5.1Zm-2.4 4.3a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4.8 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm6.2 2.5c-2.3 0-4.2 1.5-4.2 3.5 0 1.9 1.9 3.5 4.2 3.5.5 0 1-.1 1.5-.2l1.7.9-.3-1.5c.8-.6 1.3-1.5 1.3-2.4 0-2-1.9-3.5-4.2-3.5Zm-1.5 2.5a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Zm3 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Z" fill="currentColor"/></svg></a>
+      </nav>
+      <p>Copyright © 2026 Liu YongKai. All rights reserved.</p>
+    </footer>
+    <script src="city-text-memory.js?v=20260907-3"></script>
   </body>
 </html>
