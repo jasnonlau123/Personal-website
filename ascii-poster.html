@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="使用摄像头或图片实时生成 ASCII 粒子海报，并导出 PNG 或 JPG。" />
+    <title>ASCII CARD STUDIO · LYK</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="ascii-poster.css?v=20260909-1" />
+  </head>
+  <body>
+    <a class="skip-link" href="#poster-stage">跳到海报预览</a>
+
+    <main class="studio-shell">
+      <aside class="control-panel" aria-label="海报参数">
+        <header class="studio-brand">
+          <a href="index.html" aria-label="返回 Liu YongKai 首页">LYK</a>
+          <div>
+            <span>ASCII CARD</span>
+            <span>STUDIO / 01</span>
+          </div>
+        </header>
+
+        <p class="intro">把实时影像拆成会呼吸的字符颗粒。所有处理都在当前浏览器中完成。</p>
+
+        <section class="control-section" aria-labelledby="source-title">
+          <div class="section-heading">
+            <span>01</span>
+            <h2 id="source-title">图像来源</h2>
+          </div>
+          <div class="segmented source-actions">
+            <button id="camera-start" type="button">开启摄像头</button>
+            <label class="file-button" for="image-upload">上传图片</label>
+            <input id="image-upload" type="file" accept="image/*" />
+          </div>
+          <button id="camera-capture" class="capture-button" type="button" disabled>定格当前画面</button>
+          <p id="camera-status" class="micro-copy" role="status" aria-live="polite">当前使用示例图像</p>
+        </section>
+
+        <section class="control-section" aria-labelledby="particle-title">
+          <div class="section-heading">
+            <span>02</span>
+            <h2 id="particle-title">颗粒样式</h2>
+          </div>
+          <label class="range-row" for="particle-size">
+            <span>颗粒大小</span>
+            <output id="particle-value" for="particle-size">7 PX</output>
+          </label>
+          <input id="particle-size" class="range" type="range" min="3" max="14" value="7" />
+
+          <div class="color-label">
+            <span>颗粒颜色</span>
+            <output id="color-value">#1D1D1D</output>
+          </div>
+          <div class="swatches" role="group" aria-label="颗粒颜色">
+            <button class="swatch is-selected" type="button" data-color="#1d1d1d" aria-label="石墨黑" style="--swatch:#1d1d1d"></button>
+            <button class="swatch" type="button" data-color="#8e87ff" aria-label="雾紫" style="--swatch:#8e87ff"></button>
+            <button class="swatch" type="button" data-color="#ff5b35" aria-label="朱橙" style="--swatch:#ff5b35"></button>
+            <button class="swatch" type="button" data-color="#b7ff36" aria-label="荧光绿" style="--swatch:#b7ff36"></button>
+            <label class="custom-color" aria-label="自定义颜色">
+              <input id="particle-color" type="color" value="#1d1d1d" />
+              <span>+</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="control-section" aria-labelledby="output-title">
+          <div class="section-heading">
+            <span>03</span>
+            <h2 id="output-title">输出设置</h2>
+          </div>
+          <label class="field-label" for="size-preset">画布尺寸</label>
+          <select id="size-preset">
+            <option value="1080x1350">社交海报 · 1080 × 1350</option>
+            <option value="1080x1080">方形卡片 · 1080 × 1080</option>
+            <option value="1920x1080">横向屏幕 · 1920 × 1080</option>
+            <option value="2480x3508">A4 打印 · 2480 × 3508</option>
+            <option value="custom">自定义尺寸</option>
+          </select>
+          <div id="custom-size" class="custom-size" hidden>
+            <label>宽度<input id="custom-width" type="number" min="320" max="6000" value="1080" inputmode="numeric" /></label>
+            <span>×</span>
+            <label>高度<input id="custom-height" type="number" min="320" max="6000" value="1350" inputmode="numeric" /></label>
+          </div>
+
+          <span class="field-label">文件格式</span>
+          <div class="segmented" role="radiogroup" aria-label="文件格式">
+            <button class="format-option is-selected" type="button" role="radio" aria-checked="true" data-format="png">PNG</button>
+            <button class="format-option" type="button" role="radio" aria-checked="false" data-format="jpg">JPG</button>
+          </div>
+        </section>
+
+        <button id="export-button" class="export-button" type="button">
+          <span>导出海报</span>
+          <span id="export-meta">PNG · 1080 × 1350</span>
+        </button>
+      </aside>
+
+      <section id="poster-stage" class="poster-stage" tabindex="-1">
+        <header class="stage-header">
+          <div>
+            <span class="live-dot" aria-hidden="true"></span>
+            <span id="stage-status">LIVE PREVIEW</span>
+          </div>
+          <p>移动鼠标，让字符场产生偏移</p>
+          <span id="stage-dimensions">1080 × 1350 PX</span>
+        </header>
+
+        <div class="poster-wrap">
+          <article id="poster-card" class="poster-card" aria-label="ASCII 粒子海报实时预览">
+            <div class="poster-index">LYK — VISUAL EXPERIMENT 01</div>
+            <canvas id="particle-canvas" width="900" height="1125"></canvas>
+            <video id="camera-video" autoplay muted playsinline aria-hidden="true"></video>
+            <img id="source-image" src="assets/profile-liu-yongkai.png" alt="" crossorigin="anonymous" />
+            <div class="poster-copy">
+              <div>
+                <p>TURN ANY IMAGE INTO</p>
+                <h1>ASCII<br />MEMORY</h1>
+              </div>
+              <div class="poster-caption">
+                <p>Image becomes texture.<br />Texture becomes memory.</p>
+                <span>GENERATIVE POSTER<br />JINAN · 2026</span>
+              </div>
+            </div>
+            <span class="corner-mark" aria-hidden="true"></span>
+          </article>
+        </div>
+
+        <p class="privacy-note">摄像头画面不会上传服务器，只用于本地实时绘制与导出。</p>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="ascii-poster.js?v=20260909-1"></script>
+    <script src="bilingual.js?v=20260918-4"></script>
+  </body>
+</html>

@@ -12,6 +12,12 @@ const identityCard = document.querySelector(".identity-card");
 const wechatButton = document.querySelector("[data-wechat]");
 const wechatNote = document.querySelector(".wechat-note");
 const backToTop = document.querySelector(".back-to-top");
+const getSavedLanguage = () => {
+  try { return localStorage.getItem("lyk-language"); } catch { return null; }
+};
+const saveLanguage = (language) => {
+  try { localStorage.setItem("lyk-language", language); } catch { /* Local file previews can block storage. */ }
+};
 
 const orbWords = {
   zh: ["创新", "设计", "文化", "研究", "传播"],
@@ -35,6 +41,12 @@ const copy = {
       "<strong>坐标：</strong>山东济南",
     ],
     cultureTitle: "文化传播",
+    cultureCards: [
+      ["文字现象艺术回顾展将于2026年8月6日开展", "2026年8月6日"],
+      ["城市文字记忆", "记录正在消失的城市文字，从街头招牌与日常书写中寻找地方文化留下的痕迹。"],
+      ["二十四节气海报", "以文字记录时间，以设计重新讲述中国人的四季。"],
+      ["公共记忆", "从城市字迹出发，记录地方生活留下的视觉线索。"],
+    ],
     cultureIntro: "从文化议题出发，将研究、内容与视觉组织为可被理解、参与和持续传播的公共经验。",
     topics: [
       ["文化议题策划", "从地方经验、传统资源与公共议题中建立清晰的传播主题。"],
@@ -49,7 +61,7 @@ const copy = {
       ["传承人百科", "READ DETAILS"],
       ["包装文创", "READ DETAILS"],
       ["山东大学管理学院四十周年标志", "READ DETAILS"],
-      ["数字体验", "READ DETAILS"],
+      ["山东省国外语言学学会品牌设计", "READ DETAILS"],
       ["北朝佛传图像故事研究", "READ DETAILS"],
     ],
     researchTitle: "学术研究",
@@ -88,6 +100,12 @@ const copy = {
       "<strong>Location:</strong> Jinan, Shandong",
     ],
     cultureTitle: "Cultural Communication",
+    cultureCards: [
+      ["Text Phenomena: A Retrospective opens on 6 August 2026", "6 August 2026"],
+      ["Urban Text Memory", "Documenting disappearing urban lettering and the traces of local culture embedded in street signs and everyday writing."],
+      ["24 Solar Terms Posters", "Recording time through type and retelling the Chinese seasons through design."],
+      ["Public Memory", "Starting with urban lettering to document the visual traces of local life."],
+    ],
     cultureIntro: "Turning research, content, and visual systems into public cultural experiences that can be understood, joined, and shared.",
     topics: [
       ["Cultural Topic Strategy", "Build communication themes from local experience, cultural resources, and public issues."],
@@ -102,7 +120,7 @@ const copy = {
       ["Heritage Encyclopedia", "READ DETAILS"],
       ["Cultural Products", "READ DETAILS"],
       ["Visual Communication", "READ DETAILS"],
-      ["Digital Experience", "READ DETAILS"],
+      ["Shandong Association of Foreign Linguistics Brand Design", "READ DETAILS"],
       ["Northern Dynasties Buddhist Image Stories", "READ DETAILS"],
     ],
     researchTitle: "Academic Research",
@@ -386,9 +404,10 @@ function updateCarouselLanguage() {
   });
 }
 
-function applyLanguage(language) {
+function applyLanguage(language, persist = true) {
   const text = copy[language];
   currentLanguage = language;
+  if (persist) saveLanguage(language);
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
   document.querySelector(".brand").setAttribute("aria-label", text.brandAria);
   document.querySelector(".footer-brand").setAttribute("aria-label", text.brandAria);
@@ -408,6 +427,20 @@ function applyLanguage(language) {
     item.innerHTML = text.profileItems[index];
   });
   document.querySelector("#culture .topics-title h2").textContent = text.cultureTitle;
+  const cultureCards = document.querySelectorAll(".culture-lead-copy, .culture-release-card > div, .culture-archive-card > div, .culture-notes-card > div");
+  cultureCards.forEach((card, index) => {
+    const [title, body] = text.cultureCards[index];
+    const label = card.querySelector("span, p");
+    const copy = card.querySelector("p");
+    const time = card.querySelector("time");
+    if (index === 0) {
+      card.querySelector("p").textContent = title;
+      if (time) time.textContent = body;
+    } else {
+      if (label) label.textContent = title;
+      if (copy) copy.textContent = body;
+    }
+  });
   document.querySelector("#design .institutional-heading h2").textContent = text.designTitle;
   document.querySelectorAll("#design .carousel-slide:not([data-carousel-clone])").forEach((slide, index) => {
     slide.querySelector("h3").textContent = text.serviceSlides[index][0];
@@ -466,5 +499,5 @@ const navObserver = new IntersectionObserver(
 );
 sections.forEach((section) => navObserver.observe(section));
 
-applyLanguage("zh");
+applyLanguage(getSavedLanguage() === "en" ? "en" : "zh", false);
 startOrbRotation();
