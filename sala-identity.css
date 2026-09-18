@@ -13,6 +13,12 @@
 .download-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; padding: 17px 0; border-bottom: 1px solid currentColor; color: var(--sala-blue); font-weight: 700; font-size: 16px; }
 .download-link:hover { opacity: .7; }
 .download-link span { font-size: 23px; }
+.share-block { position: relative; }
+.intro-aside .share-links { display: flex; align-items: center; gap: 22px; }
+.intro-aside .share-links .social-mark { display: grid; width: 24px; height: 24px; padding: 0; color: var(--ink); border: 0; background: transparent; place-items: center; cursor: pointer; }
+.intro-aside .share-links .social-mark svg { display: block; width: 22px; height: 22px; }
+.intro-aside .share-links .social-mark:hover { color: var(--sala-blue); }
+.share-feedback { position: absolute; top: 100%; left: 0; min-height: 18px; margin-top: 10px; color: var(--sala-blue); font-size: 12px; }
 .sala-statement { padding: clamp(70px,9vw,140px) 24px; text-align: center; color: white; background: var(--sala-blue); }
 .sala-statement h2 { margin: 32px 0; font-size: clamp(36px,5.3vw,78px); line-height: 1.35; font-weight: 500; letter-spacing: -.04em; }
 .sala-statement > p:last-child { line-height: 2; font-size: 16px; }
