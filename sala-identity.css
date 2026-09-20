@@ -36,10 +36,11 @@
 .concept-list p { font-size: 16px; color: #535b65; }
 .sala-values,.digital-section { background: #f3f6f9; }
 .values-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; }
-.value-symbol { color: var(--sala-blue); font-size: 48px; }
-.values-grid h3 { font-size: 27px; margin: 22px 0 12px; }
-.values-grid p { font-size: 16px; line-height: 1.9; color: #535b65; }
-.values-grid .eyebrow { color: var(--sala-blue); }
+.values-grid article { display: grid; grid-template-rows: 58px 44px 25px auto; align-content: start; }
+.value-symbol { display: flex; align-items: flex-start; height: 58px; color: var(--sala-blue); font-size: 48px; line-height: 1; }
+.values-grid h3 { display: flex; align-items: center; margin: 0; font-size: 27px; line-height: 1.3; }
+.values-grid p { margin: 12px 0 0; font-size: 16px; line-height: 1.9; color: #535b65; }
+.values-grid .eyebrow { align-self: start; color: var(--sala-blue); line-height: 1.4; }
 .application-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .application-grid figure { margin: 0; }
 .application-grid figure:first-child,.application-grid figure:last-child { grid-column: 1/-1; }
